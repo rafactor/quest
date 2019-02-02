@@ -7,11 +7,15 @@ module.exports = function(sequelize, DataTypes) {
       notEmpty: true
     },
 
-    option: {
+    optionEn: {
       type: DataTypes.STRING,
       defaultValue: null,
       allowNull: false,
       notEmpty: true
+    },
+    optionPt: {
+      type: DataTypes.STRING,
+      defaultValue: null
     },
 
     order: {

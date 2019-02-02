@@ -41,7 +41,7 @@ module.exports = function(sequelize, DataTypes) {
     },
 
     version: {
-      type: DataTypes.DECIMAL(10, 2),
+      type: DataTypes.INTEGER,
       defaultValue: 1.0
     }
   });
