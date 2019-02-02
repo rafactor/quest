@@ -2,11 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/", function(req, res) {
-  var hbsObject = {
-    cats: "data"
-  };
-  console.log(hbsObject);
-  res.render("index", hbsObject);
+  res.render("index", {});
 });
 
 router.get("/about", function(req, res) {
