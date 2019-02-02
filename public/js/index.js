@@ -1,3 +1,6 @@
+//
+console.log("start");
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");

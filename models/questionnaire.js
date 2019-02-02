@@ -1,27 +1,38 @@
+"use strict";
 module.exports = function(sequelize, DataTypes) {
-    var Questionnaire = sequelize.define("questionnaire", {
-      name: {
-        type: DataTypes.STRING,
-        defaultValue: null,
-        allowNull: false,
-      },
-      type: {
-        type: DataTypes.STRING,
-        defaultValue: null,
-        allowNull: false,
-      },
-      active: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
-      }
+  var Questionnaire = sequelize.define("Questionnaire", {
+    name: {
+      type: DataTypes.STRING,
+      defaultValue: null,
+      allowNull: false
+    },
+    type: {
+      type: DataTypes.STRING,
+      defaultValue: null,
+      allowNull: false
+    },
+    code: {
+      type: DataTypes.STRING,
+      defaultValue: null,
+      allowNull: false,
+      unique: true
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
+    version: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 1.0
+    }
+  });
+
+  Questionnaire.associate = function(models) {
+    // Associate Questionnaire with Questions
+    Questionnaire.hasMany(models.Question, {
+      onDelete: "cascade"
     });
-
-    Questionnaire.associate = function(models){
-      // Associate Questionnaire with Questions
-      Questionnaire.hasMany(models.question, {
-        onDelete: "cascade"
-      });
-    };
-
-    return Questionnaire;
   };
+
+  return Questionnaire;
+};
