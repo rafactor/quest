@@ -1,3 +1,4 @@
+"use strict";
 module.exports = function(sequelize, DataTypes) {
   var Questionnaire = sequelize.define("Questionnaire", {
     name: {
@@ -10,9 +11,19 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: null,
       allowNull: false
     },
+    code: {
+      type: DataTypes.STRING,
+      defaultValue: null,
+      allowNull: false,
+      unique: true
+    },
     active: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
+    },
+    version: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 1.0
     }
   });
 
