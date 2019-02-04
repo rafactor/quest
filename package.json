@@ -10,7 +10,6 @@
     "test": "npm run lint && NODE_ENV=test mocha -u tdd --reporter spec --exit",
     "seed": "sequelize db:seed:all",
     "sass": "node-sass sass/main.scss public/styles/style.css -w"
-
   },
   "license": "ISC",
   "dependencies": {

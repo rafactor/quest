@@ -1,0 +1,28 @@
+.quest-container {
+  max-width: 900px;
+  margin:auto;
+}
+
+
+.quest-card-wide.mdl-card {
+    width: 800px;
+    margin: 5rem auto 0 auto;
+  }
+  
+  .quest-card-wide > .mdl-card__title {
+    color:#fff;
+    height: 20rem;
+    // background: url('../images/red-flag.jpg') center / cover;
+  }
+  .quest-card-wide > .mdl-card__menu {
+    color: #fff;
+  }
+
+  .express {
+    background: url('../images/red-flag.jpg') center / cover;
+  }
+
+  .eTA {
+    background: url('../images/eTA.jpg') center / cover;
+  }
+
