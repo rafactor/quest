@@ -7,6 +7,7 @@ module.exports = {
     db.Question.findAll({}).then(function(response) {
       if (req.accepts("html")) {
         var displayQuestions = response.map(function(item){
+          
           return item
         })
         res.render("questionnaire", {questions: response})
