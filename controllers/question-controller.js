@@ -4,8 +4,13 @@ module.exports = {
   type: ["string", "text", "choice", "number"],
 
   list: function(req, res) {
-    db.question.findAll({}).then(function(response) {
-      res.json(response);
+    db.Question.findAll({}).then(function(response) {
+      if (req.accepts("html")) {
+        var displayQuestions = response.map(function(item){
+          return item
+        })
+        res.render("questionnaire", {questions: response})
+      };
     });
   },
 
