@@ -1,4 +1,7 @@
+'use strict';
+
 var db = require("../models");
+
 
 module.exports = {
   type: ["simulator", "form", "survey"],
@@ -23,7 +26,14 @@ module.exports = {
           })
         };
 
-        res.status(200).json(response);
+        if (req.accepts('html')) {
+          res.render('index',{
+            data: response
+          })
+        } else {
+          res.status(200).json(response);
+        }
+        
       })
       .catch(err => {
         console.log(err);
