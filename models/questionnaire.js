@@ -1,4 +1,3 @@
-"use strict";
 module.exports = function(sequelize, DataTypes) {
   var Questionnaire = sequelize.define("Questionnaire", {
     name: {

@@ -19,7 +19,7 @@ module.exports = {
         },
         {
           questionEn:
-            "Is your spouse or common-law partner a citizen or permanent resident of Canada??",
+            "Is your spouse or common-law partner a citizen or permanent resident of Canada?",
           questionPt: "",
           type: "yesNo",
           optionList: "yesNo",
