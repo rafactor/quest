@@ -5,6 +5,11 @@ router.get("/", function(req, res) {
   res.render("index", {});
 });
 
+router.get("/login", function(req, res) {
+  console.log('log')
+  res.render("login", { registered: true });
+});
+
 router.get("/admin", function(req, res) {
   res.render("admin", {});
 });
