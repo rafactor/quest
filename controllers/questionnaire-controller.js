@@ -26,13 +26,13 @@ module.exports = {
           })
         };
 
-        if (req.accepts('html')) {
-          res.render('index',{
-            data: response
-          })
-        } else {
+        // if (req.accepts('html')) {
+        //   res.render('index',{
+        //     data: response
+        //   })
+        // } else {
           res.status(200).json(response);
-        }
+        // }
         
       })
       .catch(err => {
