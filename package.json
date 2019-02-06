@@ -9,12 +9,8 @@
     "fix": "eslint --fix .",
     "test": "npm run lint && NODE_ENV=test mocha -u tdd --reporter spec --exit",
     "seed": "sequelize db:seed:all",
-<<<<<<< HEAD
-    "sass": "node-sass sass/main.scss public/styles/style.css -w"
-=======
     "sass": "node-sass sass/main.scss public/styles/style.css -w",
     "dev": "npx nodemon server.js"
->>>>>>> AshDev
   },
   "license": "ISC",
   "dependencies": {
