@@ -1,0 +1,15 @@
+
+
+  <li class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons">question_answer</i>
+      <span>{{name}}</span>
+      <span class="mdl-list__item-text-body">
+        {{type}} | description
+      </span>
+    </span>
+    <span class="mdl-list__item-secondary-content">
+         {{#if @first}} <span class="mdl-list__item-secondary-info">Active</span> {{/if}}
+      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">check_box</i></a>
+    </span>
+  </li>

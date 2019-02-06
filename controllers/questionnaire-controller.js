@@ -27,7 +27,7 @@ module.exports = {
         };
 
         // if (req.accepts('html')) {
-        //   res.render('index',{
+        //   res.render('admin',{
         //     data: response
         //   })
         // } else {

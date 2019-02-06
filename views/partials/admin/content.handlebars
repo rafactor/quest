@@ -1,39 +1,31 @@
-
-
 <main class="quest-admin mdl-layout__content">
-<div class="quest-page-space">
-         
-        </div>
-    <div class="quest-container mdl-grid">
-        
+   <div class="mdl-grid questionnaires-grid">
 
-        <div class="mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text mdl-card__title">Questionnaires</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-    
-            </div>
-        </div>
+      <div class="mdl-card mdl-cell mdl-cell--4-col">
+
+         <h3>Questionnaires</h3>
+         <h4 id="rafa"></h4>
 
 
-   <div class="mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text mdl-card__title">Prospects</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-    
-            </div>
-        </div>
+         <div id="questionnaires-list-container">
 
+         </div>
 
+       </div>
+      <div class="mdl-card mdl-cell mdl-cell--8-col">
 
-    </div>
+     
+
+      </div>
+   </div>
 
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
+         <script id="questionnaire-list-template" type="text/x-handlebars-template">
+         <ul class="demo-list-three mdl-list">
+            {{#each questionnaires}}
+               {{> admin/components/questionnaire-list}}
+            {{/each}}
+
+         </ul>
+         </script>
