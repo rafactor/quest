@@ -10,7 +10,7 @@ module.exports = {
           console.log(item);
           return item
         })
-        return res.render("index", {auxiliar: response})
+        return res.render("partials/main/nav/questionnaire", {auxiliar: response})
       };
     });
   },
