@@ -5,11 +5,17 @@ var db = require("../models");
 
 var questionnaire = require("../controllers/questionnaire-controller");
 // route Questionnaires calls
-router.get("/questionnaires", questionnaire.getAll);
-router.get("/questionnaires/:id", questionnaire.getQuestionnaire);
-router.post("/questionnaires/", questionnaire.create);
-router.delete("/questionnaires/:id", questionnaire.delete);
-router.put("/questionnaires", questionnaire.update);
+router.get("/questionnaires", function (req, res, next) {
+  questionnaire.getAll().then(function (response) {
+    res.json(response)
+  }).catch(function (err) {
+    res.status(500).end();
+  });
+});
+// router.get("/questionnaires/:id", questionnaire.getQuestionnaire);
+// router.post("/questionnaires/", questionnaire.create);
+// router.delete("/questionnaires/:id", questionnaire.delete);
+// router.put("/questionnaires", questionnaire.update);
 
 //for login
 router.post("/login", passport.authenticate("local"), function(req, res) {
