@@ -55,5 +55,14 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
 
+  Question.associate = function(models) {
+    // Associate Question with AuxOptions
+    Question.hasMany(models.AuxOptions, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  }
+
   return Question;
 };
