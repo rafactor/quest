@@ -8,24 +8,19 @@
 
 
          <div id="questionnaires-list-container">
-
+            <ul class="demo-list-three mdl-list">
+               {{#each questionnaires}}
+                  {{> admin/components/questionnaire-list}}
+               {{/each}}
+            </ul>
          </div>
 
-       </div>
+      </div>
       <div class="mdl-card mdl-cell mdl-cell--8-col">
 
-     
+
 
       </div>
    </div>
 
 </main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
-         <script id="questionnaire-list-template" type="text/x-handlebars-template">
-         <ul class="demo-list-three mdl-list">
-            {{#each questionnaires}}
-               {{> admin/components/questionnaire-list}}
-            {{/each}}
-
-         </ul>
-         </script>

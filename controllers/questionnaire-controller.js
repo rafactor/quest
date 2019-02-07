@@ -26,13 +26,14 @@ module.exports = {
           })
         };
 
-        // if (req.accepts('html')) {
-        //   res.render('admin',{
-        //     data: response
-        //   })
-        // } else {
+        if (req.accepts('html')) {
+          res.render('partial/admin/components/questionnaire-list',{
+            data: response,
+            layout: false
+          })
+        } else {
           res.status(200).json(response);
-        // }
+        }
         
       })
       .catch(err => {
