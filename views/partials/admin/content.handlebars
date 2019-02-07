@@ -3,21 +3,29 @@
 
       <div class="mdl-card mdl-cell mdl-cell--4-col">
 
-         <h3>Questionnaires</h3>
-            {{count}}
+         <h4>Questionnaires</h4>
+         <!-- Colored FAB button with ripple -->
+         <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+            <i class="material-icons">add</i>
+         </button>
+
          <div id="questionnaires-list-container">
             <ul class="demo-list-three mdl-list">
                {{#each questionnaires}}
-                  {{> admin/components/questionnaire-list}}
+               {{> admin/components/questionnaire-list}}
                {{/each}}
             </ul>
          </div>
 
       </div>
       <div class="mdl-card mdl-cell mdl-cell--8-col">
+         <h4>Create new questionnaire</h4>
 
+         <div id="questionnaires-create-container">
 
+            {{> admin/components/questionnaire-create}}
 
+         </div>
       </div>
    </div>
 

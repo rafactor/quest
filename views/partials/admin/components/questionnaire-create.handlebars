@@ -1,0 +1,42 @@
+<!-- Textfield with Floating Label -->
+
+<form action="#">
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="questionnaire-name-input">
+    <label class="mdl-textfield__label" for="questionnaire-name-input">Questionnaire name</label>
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="questionnaire-code-input">
+    <label class="mdl-textfield__label" for="questionnaire-code-input">Code</label>
+  </div>
+
+<!-- Select with fixed height -->
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+        <input type="text" value="" class="mdl-textfield__input" id="questionnaire-type-input" readonly>
+        <input type="hidden" value="" name="questionnaire-type-input">
+        {{!-- <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i> --}}
+        <label for="questionnaire-type-input" class="mdl-textfield__label">Type</label>
+        <ul for="questionnaire-type-input" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+            <li class="mdl-menu__item" data-val="BY">Calculator</li>
+            <li class="mdl-menu__item" data-val="BR">Survey</li>
+        </ul>
+    </div>
+
+ <div class="mdl-textfield mdl-js-textfield">
+  <textarea class="mdl-textfield__input" type="text" rows="3" maxrows="6"
+   id="description"></textarea>
+  <label class="mdl-textfield__label" for="description">Description</label>
+</div>
+
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+  <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
+  <span class="mdl-switch__label">Active</span>
+</label>
+
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+  Submit
+</button>
+
+</form>
