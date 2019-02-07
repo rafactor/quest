@@ -4,6 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('AuxOptions', [
       {
+      QuestionId: 1,  
       name: 'maritalStatus',
       optionEn: "Annulled Marriage",
       order: 1,
@@ -12,6 +13,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
+      QuestionId: 1,  
       name: 'maritalStatus',
       optionEn: "Common-Law",
       order: 2,
@@ -20,6 +22,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
+      QuestionId: 1,  
       name: 'maritalStatus',
       optionEn: "Divorced / Separated",
       order: 3,
@@ -27,6 +30,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 1,  
       name: 'maritalStatus',
       optionEn: "Legally Separated",
       order: 4,
@@ -34,6 +38,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 1,  
       name: 'maritalStatus',
       optionEn: "Married",
       order: 5,
@@ -41,6 +46,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 1,  
       name: 'maritalStatus',
       optionEn: "Single",
       order: 6,
@@ -48,6 +54,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 1,  
       name: 'maritalStatus',
       optionEn: "Widowed",
       order: 7,
@@ -55,6 +62,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 2,      
       name: 'yesNo',
       optionEn: "Yes",
       order: 1,
@@ -62,6 +70,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 2,      
       name: 'yesNo',
       optionEn: "No",
       order: 2,
@@ -69,6 +78,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 3,      
       name: 'educationLevel',
       optionEn: "None or less than secondary (high school)",
       optionPt:"",
@@ -77,6 +87,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 3,      
       name: 'educationLevel',
       optionEn: "Secondary diploma (high school graduation)",
       optionPt:"",
@@ -85,6 +96,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 3,      
       name: 'educationLevel',
       optionEn: "One-year degree, diploma or certificate",
       optionPt:"",
@@ -93,6 +105,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 3,      
       name: 'educationLevel',
       optionEn: "Two-year program at university or college",
       optionPt:"",
@@ -101,6 +114,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 3,      
       name: 'educationLevel',
       optionEn: "Bachelor's degree or 3+ year program",
       optionPt:"",
@@ -109,6 +123,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 3,      
       name: 'educationLevel',
       optionEn: "3+ year program plus another certificate, diploma or degree",
       optionPt:"",
@@ -117,6 +132,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 3,      
       name: 'educationLevel',
       optionEn: "Master degree OR professional degree needed to practice in a licensed profession",
       optionPt:"",
@@ -125,6 +141,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 3,      
       name: 'educationLevel',
       optionEn: "Doctoral level university degree (Ph.D.)",
       optionPt:"",
@@ -133,6 +150,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 4,      
       name: 'CLBLevel',
       optionEn: "Less than CLB 4",
       optionPt:"",
@@ -141,6 +159,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 4,      
       name: 'CLBLevel',
       optionEn: "CLB 4 or 5",
       optionPt:"",
@@ -149,6 +168,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 4,      
       name: 'CLBLevel',
       optionEn: "CLB 6",
       optionPt:"",
@@ -157,6 +177,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 4,      
       name: 'CLBLevel',
       optionEn: "CLB 7",
       optionPt:"",
@@ -165,6 +186,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 4,      
       name: 'CLBLevel',
       optionEn: "CLB 8",
       optionPt:"",
@@ -173,6 +195,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 4,      
       name: 'CLBLevel',
       optionEn: "CLB 9",
       optionPt:"",
@@ -181,6 +204,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 4,      
       name: 'CLBLevel',
       optionEn: "CLB 10 or more",
       optionPt:"",
@@ -189,6 +213,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 5,      
       name: 'WorkExperience',
       optionEn: "None or less than a year",
       optionPt:"",
@@ -197,6 +222,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 5,      
       name: 'WorkExperience',
       optionEn: "1 year",
       optionPt:"",
@@ -205,6 +231,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 5,      
       name: 'WorkExperience',
       optionEn: "2 years",
       optionPt:"",
@@ -213,6 +240,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 5,      
       name: 'WorkExperience',
       optionEn: "3 years",
       optionPt:"",
@@ -221,6 +249,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 5,      
       name: 'WorkExperience',
       optionEn: "4 years",
       optionPt:"",
@@ -229,6 +258,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
+      QuestionId: 5,      
       name: 'WorkExperience',
       optionEn: "5 years or more",
       optionPt:"",
