@@ -7,10 +7,10 @@ module.exports = {
     db.Question.findAll({}).then(function(response) {
       if (req.accepts("html")) {
         var displayQuestions = response.map(function(item){
-          
+          console.log(item);
           return item
         })
-        res.render("questionnaire", {questions: response})
+        return res.render("questionnaire", {questions: response})
       };
     });
   },
