@@ -12,7 +12,6 @@ module.exports = {
           console.log(responseArray);
         };
        };
-       
         return res.render("partials/main/questionnaire", {auxiliar: response})
     });
   },
