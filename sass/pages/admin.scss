@@ -1,3 +1,48 @@
 .quest-admin{
-    background-color: darkslategrey;
+    // background-color: darkslategrey;
+    // margin-top: 30rem;
 }
+
+.quest-card{
+    position: absolute;
+    // max-width: 400px;
+    max-height: 800px;
+
+    &__container{
+        padding: 1rem;
+    }
+}
+
+
+
+// .quest-create {
+//     float: right;
+//     position: relative;
+//     right: 0;
+//     top: 0;
+// }
+
+// .mdl-card.quest-card{
+//     padding: 2rem;
+// }
+.mdl-textfield.questionnaire-input-width{
+    width: 100%;
+}
+
+.mdl-button--mini-fab.quest-button--top-right{
+    position: absolute;
+    z-index: 10;
+    top: 20px;
+    right:20px;
+}
+
+a.mdl-list__item-secondary-action{
+    // text-decoration: none;
+    color: black;
+    // width: 100%;
+}
+
+li.questionnaire-listed>span{
+    cursor: pointer;
+}
+
