@@ -32,6 +32,42 @@ module.exports = {
     });
   },
 
+  getQuestionnaire: (id) => {
+    return new Promise(function (resolve, reject) {
+      db.Questionnaire.findAll({
+        where: {
+        id: id
+        },
+        include: [db.Question]
+      })
+        .then(docs => {
+          console.log(docs)
+          const response = {
+            count: docs.length,
+            questionnaires: docs.map(doc => {
+
+
+              return {
+                name: doc.name,
+                type: doc.type,
+                code: doc.code,
+                active: doc.active,
+                id: doc.id,
+                request: {
+                  type: 'GET',
+                  url: 'http://localhost:3000/api/questionnaires/' + doc.id
+                },
+                numberOfQuestions: doc.Questions.length,
+                questions: doc.Questions
+              };
+            })
+          };
+
+          resolve(response);
+        }).catch(reject);
+    });
+  },
+
   create: (req) => {
     console.log('start');
     console.log(req);

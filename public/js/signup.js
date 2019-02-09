@@ -33,11 +33,15 @@ $(document).ready(function() {
       email: email,
       password: password
     })
-      .then(function(data) {
-        window.location.replace(data);
+      .then(function() {
+        window.location.href="/admin";
+        
         // If there's an error, handle it by throwing up a bootstrap alert
-      })
-      .catch(handleLoginErr);
+      }).catch(function(err) {
+        console.log(err);
+        res.json(err);
+        // res.status(422).json(err.errors[0].message);
+      });
   }
 
   function handleLoginErr(err) {

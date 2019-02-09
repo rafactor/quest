@@ -17,22 +17,22 @@ module.exports = function(sequelize, DataTypes) {
 
     username: {
       type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: null,
+      // allowNull: false,
+      // defaultValue: null,
       unique: true,
       validate: {
         isAlphanumeric: true,
-        notEmpty: true
+        // notEmpty: true
       }
     },
 
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: null,
+      // allowNull: false,
+      // defaultValue: null,
       validate: {
         is: /^[a-z]+$/i,
-        notEmpty: true
+        // notEmpty: true
       }
     },
 

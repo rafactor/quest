@@ -3,7 +3,7 @@
 <form action="#">
 
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label questionnaire-input-width">
-    <input class="mdl-textfield__input" type="text" id="input-questionnaire-name">
+    <input class="mdl-textfield__input" type="text" id="input-questionnaire-name" value="">
     <label class="mdl-textfield__label" for="input-questionnaire-name">Questionnaire name</label>
   </div>
 
@@ -16,10 +16,10 @@
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select questionnaire-input-width">
     <select class="mdl-textfield__input" id="input-questionnaire-type" name="type">
       <option></option>
-      <option value="calculator">Calculator</option>
-      <option value="profile">Profile</option>
+      <option value="Calculator">Calculator</option>
+      <option value="Profile">Profile</option>
     </select>
-    <label for="input-questionnaire-type" class="mdl-textfield__label questionnaire-input-width">Type</label>
+    <label for="input-questionnaire-type" class="mdl-textfield__label questionnaire-input-width ">Type</label>
      </div>
 
   <div class="mdl-textfield mdl-js-textfield questionnaire-input-width questionnaire-input-height">
@@ -33,8 +33,17 @@
   </label>
 
 <div class="quest-form-submit u-margin-top-medium u-center-text">
-  <button id="submit-questionnaire" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+  <button id="questionnaire-submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden" >
     Submit
+  </button>
+   <button id="questionnaire-edit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden">
+    Edit
+  </button>
+   <button id="questionnaire-save" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden">
+    Save
+  </button>
+   <button id="questionnaire-cancel" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden">
+    Cancel
   </button>
 </div>
 </form>

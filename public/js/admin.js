@@ -1,6 +1,11 @@
 console.log('admin')
 
-const $btnSubmitQuestionnaire = $("#submit-questionnaire");
+const $btnSubmitQuestionnaire = $("#questionnaire-submit");
+const $btnEditQuestionnaire = $("#questionnaire-edit");
+const $btnSaveQuestionnaire = $("#questionnaire-save");
+const $btnCancelQuestionnaire = $("#questionnaire-cancel");
+
+
 const $btnCreateQuestionnaire = $("#btn-create-questionnaire");
 const $btnCloseQuestionnaire = $("#btn-close-questionnaire");
 // const btnListedQuestionnaire = document.querySelectorAll('li.questionnaire-listed>span');
@@ -17,50 +22,116 @@ const $inputQuestionnaireDescription = $("#input-questionnaire-description");
 const $toogleQuestionnaireActive = $("#toogle-questionnaire-active");
 
 var api = {
-  postQuestionnaire(body){
+  postQuestionnaire(body) {
     return $.ajax({
-              headers: {
-                "Content-Type": "application/json"
-              },
-              type: "POST",
-              url: "api/questionnaires",
-              data: JSON.stringify(body)
-            });
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/questionnaires",
+      data: JSON.stringify(body)
+    });
+  },
+  getQuestionnaire(id) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "GET",
+      url: "api/questionnaires/" + id,
+    });
+
   }
 }
 
 
 var handlers = {
-  submitQuestionnaire(){
-    event.preventDefault();  
+  submitQuestionnaire() {
+    event.preventDefault();
     var body = {
-      name: inputQuestionnaireName.value.trim(),
-      code: inputQuestionnaireCode.value.trim(),
-      type: inputQuestionnaireType.value.trim(),
+      name: $inputQuestionnaireName.val().trim(),
+      code: $inputQuestionnaireCode.val().trim(),
+      type: $inputQuestionnaireType.val().trim(),
       // description: inputQuestionnaireDescription.value.trim(),
-      active: toogleQuestionnaireActive.value
+      active: ($toogleQuestionnaireActive.hasClass("is-checked")) ? true : false,
     };
     api.postQuestionnaire(body)
   },
 
-  displayQuestionnaireForm(){
+  createQuestionnaireForm() {
     $cardCreateQuestionnaire.removeClass('hidden');
+    $cardCreateQuestionnaireTitle.html('Create Questionnaire')
+
     $btnCreateQuestionnaire.addClass('hidden');
-    $cardCreateQuestionnaireTitle.html('Create a New Questionnaire')
+    $btnSubmitQuestionnaire.removeClass('hidden');
+    $btnSaveQuestionnaire.addClass('hidden');
+    $btnEditQuestionnaire.addClass('hidden');
+
+    $inputQuestionnaireName.val("").attr('disabled', false);
+    $inputQuestionnaireType.val("").attr('disabled', false);
+    $inputQuestionnaireCode.val("").attr('disabled', false);
+    $inputQuestionnaireDescription.val("").attr('disabled', false);
+    $toogleQuestionnaireActive.attr('disabled', false)
   },
 
-  listedQuestionnaire(){
+  closeQuestionnaireForm() {
+    $cardCreateQuestionnaire.addClass('hidden');
+    $btnCreateQuestionnaire.removeClass('hidden');
+  },
+
+  editQuestionnaire() {
+    event.preventDefault();
+
+    console.log('edit')
+    $inputQuestionnaireName.attr('disabled', false);
+    $inputQuestionnaireType.attr('disabled', false);
+    $inputQuestionnaireCode.attr('disabled', false);
+    $inputQuestionnaireDescription.attr('disabled', false);
+    $toogleQuestionnaireActive.attr('disabled', false)
+
+    $btnSubmitQuestionnaire.addClass('hidden');
+    $btnEditQuestionnaire.addClass('hidden');
+    $btnSaveQuestionnaire.removeClass('hidden');
+    $btnCancelQuestionnaire.removeClass('hidden');
+  },
+
+  listedQuestionnaire() {
     var id = $(this).attr("data-id");
     $cardCreateQuestionnaire.removeClass('hidden');
     $btnCreateQuestionnaire.addClass('hidden');
-    $cardCreateQuestionnaireTitle.html('Create a New Questionnaire')
+    $cardCreateQuestionnaireTitle.html('View Questionnaire')
 
-    // $inputQuestionnaireName = 
-    // $inputQuestionnaireCode = 
-    // $inputQuestionnaireType = 
-    // $inputQuestionnaireDescription = 
-    // $toogleQuestionnaireActive = 
-    
+    //call the api and populate fields
+    api.getQuestionnaire(id).then(function (response) {
+      console.log(response.questionnaires)
+      $inputQuestionnaireName
+        .val(response.questionnaires[0].name)
+        .attr('disabled', 'disabled');
+      $inputQuestionnaireCode.val(response.questionnaires[0].code)
+        .attr('disabled', 'disabled');
+      $inputQuestionnaireType.val(response.questionnaires[0].type)
+        .attr('disabled', 'disabled');
+      $inputQuestionnaireDescription.val(response.questionnaires[0].description)
+        .attr('disabled', 'disabled');
+      $toogleQuestionnaireActive.attr('disabled', 'disabled');
+      // $toogleQuestionnaireActive.val(response.questionnaires[0].active)
+      // if (response.questionnaires[0].active === false) {
+      //   $toogleQuestionnaireActive.removeClass("is-checked");
+      // } else { $toogleQuestionnaireActive.addClass("is-checked");}
+
+      $btnSubmitQuestionnaire.addClass('hidden');
+      $btnEditQuestionnaire.removeClass('hidden');
+      $btnSaveQuestionnaire.addClass('hidden');
+
+
+      //hide submit button and show edit and save 
+
+
+      $("#quest-card__create-questionnaire > div > form > .mdl-textfield").addClass('is-dirty')
+    })
+
+
+
 
 
   }
@@ -68,7 +139,8 @@ var handlers = {
 
 
 $btnSubmitQuestionnaire.on("click", handlers.submitQuestionnaire);
-$btnCreateQuestionnaire.on("click", handlers.displayQuestionnaireForm);
-// btnCloseQuestionnaire.on("click", handlers.displayQuestionnaireForm);
+$btnEditQuestionnaire.on("click", handlers.editQuestionnaire)
+$btnCreateQuestionnaire.on("click", handlers.createQuestionnaireForm);
+$btnCloseQuestionnaire.on("click", handlers.closeQuestionnaireForm);
 // btnListedQuestionnaire.addEventListener("click", handlers.listedQuestionnaire);
-$liListedQuestionnaire.on("click",handlers.listedQuestionnaire)
+$liListedQuestionnaire.on("click", handlers.listedQuestionnaire)

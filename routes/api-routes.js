@@ -13,11 +13,24 @@ router.get("/questionnaires", function (req, res) {
   });
 });
 
+router.get("/questionnaires/:id", function (req, res) {
+  const id = parseInt(req.params.id)
+  questionnaire.getQuestionnaire(id).then(function (response) {
+    res.json(response)
+  }).catch(function (err) {
+    res.status(500).json({
+      error: err
+    }).end();
+  });
+});
+
 router.post("/questionnaires/", function (req, res) {
   questionnaire.create(req).then(function (response) {
     res.json(response)
   }).catch(function (err) {
-    res.status(500).end();
+    res.status(500).json({
+      error: err
+    }).end();
   });
 });
 
