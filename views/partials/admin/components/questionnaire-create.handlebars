@@ -1,0 +1,49 @@
+<!-- Textfield with Floating Label -->
+
+<form action="#">
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label questionnaire-input-width">
+    <input class="mdl-textfield__input" type="text" id="input-questionnaire-name" value="">
+    <label class="mdl-textfield__label" for="input-questionnaire-name">Questionnaire name</label>
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label questionnaire-input-width">
+    <input class="mdl-textfield__input" type="text" id="input-questionnaire-code">
+    <label class="mdl-textfield__label" for="input-questionnaire-code">Code</label>
+  </div>
+
+  <!-- Select with floating label -->
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select questionnaire-input-width">
+    <select class="mdl-textfield__input" id="input-questionnaire-type" name="type">
+      <option></option>
+      <option value="Calculator">Calculator</option>
+      <option value="Profile">Profile</option>
+    </select>
+    <label for="input-questionnaire-type" class="mdl-textfield__label questionnaire-input-width ">Type</label>
+     </div>
+
+  <div class="mdl-textfield mdl-js-textfield questionnaire-input-width questionnaire-input-height">
+    <textarea class="mdl-textfield__input " type="text" rows="3" maxrows="6" id="input-questionnaire-description"></textarea>
+    <label class="mdl-textfield__label" for="input-questionnaire-description">Description</label>
+  </div>
+
+  <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="toogle-questionnaire-active">     
+    <input type="checkbox" id="toogle-questionnaire-active" class="mdl-switch__input" checked>
+    <span class="mdl-switch__label">Active</span>
+  </label>
+
+<div class="quest-form-submit u-margin-top-medium u-center-text">
+  <button id="questionnaire-submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden" >
+    Submit
+  </button>
+   <button id="questionnaire-edit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden">
+    Edit
+  </button>
+   <button id="questionnaire-save" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden">
+    Save
+  </button>
+   <button id="questionnaire-cancel" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden">
+    Cancel
+  </button>
+</div>
+</form>

@@ -1,0 +1,38 @@
+<div class="mdl-card {{#unless registered}} hidden {{/unless}}">
+    <div class="mdl-card__title">
+        Login to Quest
+    </div>
+
+    <div class="mdl-card__supporting-text">
+
+        <form class="login">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="emailInputLogin">
+                <label class="mdl-textfield__label" for="emailInputLogin">email</label>
+
+            </div>
+
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="passwordInputLogin">
+                <label class="mdl-textfield__label" for="passwordInputLogin">password</label>
+
+            </div>
+
+                <div class="mdl-card__actions">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" id="btnLogin">
+            Login
+        </button>
+
+        <button class="mdl-button mdl-js-button  mdl-js-ripple-effect quest-btn--cancel" id="btnCancelLogin">
+            Cancel
+        </button>
+    </div>
+        </form>
+
+    </div>
+
+    <div class="quest-create-account">
+        <a href="#" id="linkCreateAcc">create your account</a>
+    </div>
+</div>
