@@ -10,6 +10,32 @@
 
     &__container{
         padding: 1rem;
+    };
+
+    &__questions{
+
+    };
+
+    &__questionnaire{
+
+    }
+
+    &__title{
+        color: blue;
+    }
+
+    &__list{
+        width: 100%;
+
+        &--questionnaires > li{
+            cursor: pointer;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        display: block;
+
     }
 }
 

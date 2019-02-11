@@ -7,7 +7,7 @@ module.exports = {
   // type: ["simulator", "form", "survey"],
 
   getAll: () => {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
       db.Questionnaire.findAll({})
         .then(docs => {
           const response = {
@@ -17,6 +17,7 @@ module.exports = {
                 name: doc.name,
                 type: doc.type,
                 code: doc.code,
+                description: doc.description,
                 active: doc.active,
                 id: doc.id,
                 request: {
@@ -33,7 +34,7 @@ module.exports = {
   },
 
   getQuestionnaire: (id) => {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
       db.Questionnaire.findAll({
         where: {
         id: id
@@ -41,7 +42,6 @@ module.exports = {
         include: [db.Question]
       })
         .then(docs => {
-          console.log(docs)
           const response = {
             count: docs.length,
             questionnaires: docs.map(doc => {
@@ -51,6 +51,7 @@ module.exports = {
                 name: doc.name,
                 type: doc.type,
                 code: doc.code,
+                description: doc.description,
                 active: doc.active,
                 id: doc.id,
                 request: {
@@ -69,21 +70,23 @@ module.exports = {
   },
 
   create: (req) => {
-    console.log('start');
-    console.log(req);
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
+      console.log(req.body)
       db.Questionnaire.create({
         name: req.body.name,
         type: req.body.type,
+        description: req.body.description,
+        active: req.body.active,
         code: req.body.code
-      }).then(function (data) {
-        console.log(data)
+      }).then(data => {
         const response = {
           message: "Create questionnary successfully",
           createdQuestionnaire: {
             name: data.name,
             type: data.type,
             code: data.code,
+            active: data.active,
+            description: data.description,
             id: data.id,
             request: {
               type: 'GET',
@@ -96,9 +99,30 @@ module.exports = {
     });
   },
 
+  update: (req) => {
+    console.log(req.body)
+    return new Promise((resolve, reject) => {
+      db.Questionnaire.update(req.body,{
+      where:{
+        id: parseInt(req.body.id)
+      }
+    }).then(() => {
+        const response = {
+          message: "Questionnary updated",
+            request: {
+              type: 'GET',
+              url: 'http://localhost:3000/api/questionnaires/' + req.body.id
+            }
+          // }
+        };
+        resolve(response);
+      }).catch(reject);
+    });
+  },
+
   delete: (id) => {
     console.log(id)
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) =>{
       db.Questionnaires.destroy({
         where: {
           id: id

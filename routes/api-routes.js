@@ -1,40 +1,52 @@
-var express = require("express");
-var router = express.Router();
-var passport = require("../config/passport");
-var db = require("../models");
+'use strict'
 
-var questionnaire = require("../controllers/questionnaire-controller");
+const express = require("express");
+const router = express.Router();
+const passport = require("../config/passport");
+const db = require("../models");
+const questionnaire = require("../controllers/questionnaire-controller");
+
 // route Questionnaires calls
-router.get("/questionnaires", function (req, res) {
-  questionnaire.getAll().then(function (response) {
+router.get("/questionnaires", (req, res) => {
+  questionnaire.getAll().then(response => {
     res.json(response)
-  }).catch(function (err) {
-    res.status(500).end();
+  }).catch(err => {
+    res.status(500).json({
+      error: err
+    }).end();
   });
 });
 
-router.get("/questionnaires/:id", function (req, res) {
+router.get("/questionnaires/:id", (req, res) =>{
   const id = parseInt(req.params.id)
-  questionnaire.getQuestionnaire(id).then(function (response) {
+  questionnaire.getQuestionnaire(id).then(response => {
     res.json(response)
-  }).catch(function (err) {
+  }).catch(err => {
     res.status(500).json({
       error: err
     }).end();
   });
 });
 
-router.post("/questionnaires/", function (req, res) {
-  questionnaire.create(req).then(function (response) {
+router.post("/questionnaires/", (req, res) => {
+  questionnaire.create(req).then(response => {
     res.json(response)
-  }).catch(function (err) {
+  }).catch(err => {
     res.status(500).json({
       error: err
     }).end();
   });
 });
 
-// router.get("/questionnaires/:id", questionnaire.getQuestionnaire);
+router.put("/questionnaires/", (req, res) => {
+  questionnaire.update(req).then(response => {
+    res.json(response)
+  }).catch(err => {
+    res.status(500).json({
+      error: err
+    }).end();
+  });
+});
 
 router.delete("/questionnaires/:id", function (req, res) {
   const id = parseInt(req.params.id)
@@ -51,7 +63,9 @@ router.delete("/questionnaires/:id", function (req, res) {
 
 //for login
 router.post("/login", passport.authenticate("local"), function (req, res) {
-  res.json("/members");
+  // let response = res
+  // console.log(req.user.User.email)
+  res.json('/admin');
 });
 
 

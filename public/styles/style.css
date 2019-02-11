@@ -24,6 +24,15 @@
   max-height: 800px; }
   .quest-card__container {
     padding: 1rem; }
+  .quest-card__title {
+    color: blue; }
+  .quest-card__list {
+    width: 100%; }
+    .quest-card__list--questionnaires > li {
+      cursor: pointer; }
+  .quest-card a {
+    text-decoration: none;
+    display: block; }
 
 .mdl-textfield.questionnaire-input-width {
   width: 100%; }
