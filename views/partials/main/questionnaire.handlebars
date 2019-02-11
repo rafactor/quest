@@ -3,9 +3,14 @@
 </div>
 <div class="questionnaire-form">
     <form>
-        {{#each auxiliar}}
-        {{id}}
-        {{questionEn}} <br>
+        {{#each questionData}}
+        {{dataValues.id}}.
+        {{dataValues.questionEn}} <br>
+        <select>
+        {{#each dataValues.AuxOptions}}
+        <option value="{{id}}">{{optionEn}}</option>
+        {{/each}}
+        </select> <br>
         {{/each}}
     </form>
 </div>

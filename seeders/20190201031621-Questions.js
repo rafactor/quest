@@ -1,9 +1,8 @@
 module.exports = {
-  up: function(queryInterface) {
+  up: function (queryInterface) {
     return queryInterface.bulkInsert(
       "Questions",
-      [
-        {
+      [{
           questionEn: "What is your martial status?",
           questionPt: "Qual e o seu estado civil?",
           type: "Option",
@@ -18,8 +17,7 @@ module.exports = {
           QuestionnaireId: 1
         },
         {
-          questionEn:
-            "Is your spouse or common-law partner a citizen or permanent resident of Canada?",
+          questionEn: "Is your spouse or common-law partner a citizen or permanent resident of Canada?",
           questionPt: "",
           type: "yesNo",
           optionList: "yesNo",
@@ -33,8 +31,7 @@ module.exports = {
           QuestionnaireId: 1
         },
         {
-          questionEn:
-            "Will your spouse or common-law partner come with you to Canada?",
+          questionEn: "Will your spouse or common-law partner come with you to Canada?",
           questionPt: "",
           type: "yesNo",
           optionList: "yesNo",
@@ -48,11 +45,11 @@ module.exports = {
           QuestionnaireId: 1
         },
         {
-          questionEn: "What is your date of birth?",
+          questionEn: "How old are you?",
           questionPt: "",
-          type: "Date",
-          optionList: null,
-          isConditional: true,
+          type: "Option",
+          optionList: "age",
+          isConditional: false,
           conditionalQuestionId: null,
           conditionalAnswer: null,
           status: "active",
@@ -65,8 +62,8 @@ module.exports = {
           questionEn: "What is your level of education?",
           questionPt: "",
           type: "Option",
-          optionList: "education",
-          isConditional: true,
+          optionList: "educationLevel",
+          isConditional: false,
           conditionalQuestionId: null,
           conditionalAnswer: null,
           status: "active",
@@ -76,12 +73,11 @@ module.exports = {
           QuestionnaireId: 1
         },
         {
-          questionEn:
-            "Do you have a language test results less than two years old?",
+          questionEn: "Have you earned a Canadian degree, diploma or certificate?",
           questionPt: "",
           type: "yesNo",
           optionList: "yesNo",
-          isConditional: null,
+          isConditional: false,
           conditionalQuestionId: null,
           conditionalAnswer: null,
           status: "active",
@@ -91,12 +87,11 @@ module.exports = {
           QuestionnaireId: 1
         },
         {
-          questionEn:
-            "Which language test did you take for your first official language?",
+          questionEn: "Choose the best answer to describe this level of education.",
           questionPt: "",
           type: "Option",
-          optionList: "languageTests",
-          isConditional: null,
+          optionList: "canadianEducation",
+          isConditional: false,
           conditionalQuestionId: null,
           conditionalAnswer: null,
           status: "active",
@@ -106,11 +101,12 @@ module.exports = {
           QuestionnaireId: 1
         },
         {
-          questionEn: "Enter your Speaking Test Score:",
+          questionEn: 
+          "Do you have a language test results less than two years old?",
           questionPt: "",
-          type: "Option",
-          optionList: "languageTestsScore",
-          isConditional: null,
+          type: "yesNo",
+          optionList: "yesNo",
+          isConditional: false,
           conditionalQuestionId: null,
           conditionalAnswer: null,
           status: "active",
@@ -120,11 +116,11 @@ module.exports = {
           QuestionnaireId: 1
         },
         {
-          questionEn: "Enter your Listening Test Score:",
+          questionEn: "Which language test did you take for your first official language?",
           questionPt: "",
           type: "Option",
-          optionList: "languageTestsScore",
-          isConditional: null,
+          optionList: "languageTests1",
+          isConditional: false,
           conditionalQuestionId: null,
           conditionalAnswer: null,
           status: "active",
@@ -134,11 +130,11 @@ module.exports = {
           QuestionnaireId: 1
         },
         {
-          questionEn: "Enter your Reading Test Score:",
+          questionEn: "Enter your CELPIP-G Speaking Test Score:",
           questionPt: "",
           type: "Option",
-          optionList: "languageTestsScore",
-          isConditional: null,
+          optionList: "celpipSpeakingScores",
+          isConditional: false,
           conditionalQuestionId: null,
           conditionalAnswer: null,
           status: "active",
@@ -148,11 +144,11 @@ module.exports = {
           QuestionnaireId: 1
         },
         {
-          questionEn: "Enter your Writing Test Score:",
+          questionEn: "Enter your CELPIP-G Listening Test Score:",
           questionPt: "",
           type: "Option",
-          optionList: "languageTestsScore",
-          isConditional: null,
+          optionList: "celpipListeningScores",
+          isConditional: false,
           conditionalQuestionId: null,
           conditionalAnswer: null,
           status: "active",
@@ -160,17 +156,406 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
           QuestionnaireId: 1
-        }
-      ],
-      {}
+        },
+        {
+          questionEn: "Enter your CELPIP-G Reading Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "celpipReadingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Enter your CELPIP-G Writing Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "celpipWritingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your IELTS Speaking Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "ieltsSpeakingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your IELTS Listening Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "ieltsListeningScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your IELTS Reading Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "ieltsReadingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your IELTS Writing Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "ieltsWritingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your TEF Canada Speaking Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "tefSpeakingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your TEF Canada Listening Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "tefListeningScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your TEF Canada Reading Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "tefReadingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your TEF Canada Writing Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "tefWritingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your TFC Canada Speaking Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "tfcSpeakingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your TFC Canada Listening Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "tfcListeningScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your TFC Canada Reading Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "tfcReadingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your TFC Canada Writing Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "tfcWritingScores",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Do you have other language results? If so, which language test did you take for your second official language? Test results must be less than two years old.",
+          questionPt: "",
+          type: "Option",
+          optionList: "languageTests2",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your CELPIP-G Speaking Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "celpipSpeakingScores2",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Enter your CELPIP-G Listening Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "celpipListeningScores2",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Enter your CELPIP-G Reading Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "celpipReadingScores2",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Enter your CELPIP-G Writing Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "celpipWritingScores2",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },{
+          questionEn: "Enter your IELTS Speaking Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "ieltsSpeakingScores2",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Enter your IELTS Listening Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "ieltsListeningScores2",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Enter your IELTS Reading Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "ieltsReadingScores2",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Enter your IELTS Writing Test Score:",
+          questionPt: "",
+          type: "Option",
+          optionList: "ieltsWritingScores2",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "In the last ten years, how many years of skilled work experience in Canada do you have?",
+          questionPt: "",
+          type: "Option",
+          optionList: "workExperience",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Do you have a certificate of qualification from a Canadian province, territory or federal body?",
+          questionPt: "",
+          type: "yesNo",
+          optionList: "yesNo",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Do you have a valid job offer supported by a Labour Market Impact Assessment(if needed)?",
+          questionPt: "",
+          type: "yesNo",
+          optionList: "yesNo",
+          isConditional: true,
+          conditionalQuestionId: 3,
+          conditionalAnswer: "yes",
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Which NOC skill type or level is the job offer?",
+          questionPt: "",
+          type: "Option",
+          optionList: "skillLevel",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Do you have a nomination certificate from a province or territory?",
+          questionPt: "",
+          type: "yesNo",
+          optionList: "yesNo",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+        {
+          questionEn: "Do you or your spouse or common-law partner (if they will come with you to Canada) have at least one brother or sister living in Canada who is a citizen or permanent resident?",
+          questionPt: "",
+          type: "yesNo",
+          optionList: "yesNo",
+          isConditional: false,
+          conditionalQuestionId: null,
+          conditionalAnswer: null,
+          status: "active",
+          version: 1.0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          QuestionnaireId: 1
+        },
+      ], {}
     );
   },
 
-  down: function(queryInterface) {
-    return queryInterface.bulkDelete("Questions", null, [
-      {
-        id: 1
-      }
-    ]);
+  down: function (queryInterface) {
+    return queryInterface.bulkDelete("Questions", null, [{
+      id: 1
+    }]);
   }
 };

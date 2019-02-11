@@ -1,14 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
   var Question = sequelize.define("Question", {
     questionEn: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       defaultValue: null,
       allowNull: false,
       notEmpty: true
     },
 
     questionPt: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       defaultValue: null
     },
 
