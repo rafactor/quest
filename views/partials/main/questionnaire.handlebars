@@ -1,23 +1,47 @@
-    <div class="questionnaire-header mdl-layout__header">
-        <h2>Questionnaire</h2>
+<div class="mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout-icon">
+        </div>
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout__title">Questionnaire</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link">Nav Link 1</a>
+                    <a class="mdl-navigation__link">Nav Link 2</a>
+                </nav>
+            </div>
+    </header>
+
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout__title">Navigation</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link">Nav Link 1</a>
+            <a class="mdl-navigation__link">Nav Link 2</a>
+        </nav>
     </div>
-    <div class="questionnaire-form mdl-layout--fixed-drawer">
-        <form id="questionnaire" class="mdl-cell--N-col">
-            <br>
-            {{#each questionData}}
-            <strong>{{dataValues.id}}.</strong>
-            <strong>{{dataValues.questionEn}}</strong> <br>
-            <select id="responseDropDown">
-            {{#each dataValues.AuxOptions}}
-            <option value="{{id}}">{{optionEn}}</option>
-            {{/each}}
-            </select> <br> <br>
-            {{/each}}
-            <br>
-            <input type="submit" value="Submit" id="submit-button"></input>
-            <br>
-        </form>
-    </div>
+
+    <main class="mdl-layout__content">
+        <div id="questionnaire-form">
+            <form id="questionnaire">
+                <div class="mdl-cell mdl-cell--11-col">
+                    <br>
+                    {{#each questionData}}
+                    <strong>{{dataValues.id}}.</strong>
+                    <strong>{{dataValues.questionEn}}</strong> <br>
+                    <select id="responseDropDown" class="mdl-cell">
+                    {{#each dataValues.AuxOptions}}
+                    <option value="{{id}}">{{optionEn}}</option>
+                    {{/each}}
+                    </select> <br> <br>
+                    {{/each}}
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
+                    <br>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+
 <script>
     
 </script>
