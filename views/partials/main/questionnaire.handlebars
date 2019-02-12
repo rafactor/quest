@@ -5,12 +5,12 @@
         <form id="questionnaire" class="mdl-cell">
             {{#each questionData}}
             <strong>{{dataValues.id}}.</strong>
-            {{dataValues.questionEn}} <br>
+            <strong>{{dataValues.questionEn}}</strong> <br>
             <select id="responseDropDown">
             {{#each dataValues.AuxOptions}}
             <option value="{{id}}">{{optionEn}}</option>
             {{/each}}
-            </select> <br>
+            </select> <br> <br>
             {{/each}}
             <br>
             <input type="submit" value="Submit" id="submit-button"></input>
