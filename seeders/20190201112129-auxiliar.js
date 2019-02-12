@@ -185,7 +185,7 @@ module.exports = {
     },{
       QuestionId: 6,
       name: "yesNo",
-      optionEn: "yes",
+      optionEn: "Yes",
       optionPt: "",
       order: 1,
       type: "STRING",
@@ -194,7 +194,7 @@ module.exports = {
     },{
       QuestionId: 6,
       name: "yesNo",
-      optionEn: "no",
+      optionEn: "No",
       optionPt: "",
       order: 2,
       type: "STRING",
@@ -230,7 +230,7 @@ module.exports = {
     },{
       QuestionId: 8,
       name: "yesNo",
-      optionEn: "yes",
+      optionEn: "Yes",
       optionPt: "",
       order: 1,
       type: "STRING",
@@ -239,7 +239,7 @@ module.exports = {
     },{
       QuestionId: 8,
       name: "yesNo",
-      optionEn: "no",
+      optionEn: "No",
       optionPt: "",
       order: 2,
       type: "STRING",
@@ -1994,7 +1994,7 @@ module.exports = {
     },{
       QuestionId: 36,
       name: "yesNo",
-      optionEn: "yes",
+      optionEn: "Yes",
       optionPt: "",
       order: 1,
       type: "STRING",
@@ -2003,7 +2003,7 @@ module.exports = {
     },{
       QuestionId: 36,
       name: "yesNo",
-      optionEn: "no",
+      optionEn: "No",
       optionPt: "",
       order: 2,
       type: "STRING",
@@ -2012,7 +2012,7 @@ module.exports = {
     },{
       QuestionId: 37,
       name: "yesNo",
-      optionEn: "yes",
+      optionEn: "Yes",
       optionPt: "",
       order: 1,
       type: "STRING",
@@ -2021,7 +2021,7 @@ module.exports = {
     },{
       QuestionId: 37,
       name: "yesNo",
-      optionEn: "no",
+      optionEn: "No",
       optionPt: "",
       order: 2,
       type: "STRING",
@@ -2057,7 +2057,7 @@ module.exports = {
     },{
       QuestionId: 39,
       name: "yesNo",
-      optionEn: "yes",
+      optionEn: "Yes",
       optionPt: "",
       order: 1,
       type: "STRING",
@@ -2066,7 +2066,7 @@ module.exports = {
     },{
       QuestionId: 39,
       name: "yesNo",
-      optionEn: "no",
+      optionEn: "No",
       optionPt: "",
       order: 2,
       type: "STRING",
@@ -2075,7 +2075,7 @@ module.exports = {
     },{
       QuestionId: 40,
       name: "yesNo",
-      optionEn: "yes",
+      optionEn: "Yes",
       optionPt: "",
       order: 1,
       type: "STRING",
@@ -2084,7 +2084,7 @@ module.exports = {
     },{
       QuestionId: 40,
       name: "yesNo",
-      optionEn: "no",
+      optionEn: "No",
       optionPt: "",
       order: 1,
       type: "STRING",

@@ -1,17 +1,22 @@
-<div class="header">
-    <h2>Questionnaire</h2>
-</div>
-<div class="questionnaire-form">
-    <form>
-        {{#each questionData}}
-        {{dataValues.id}}.
-        {{dataValues.questionEn}} <br>
-        <select>
-        {{#each dataValues.AuxOptions}}
-        <option value="{{id}}">{{optionEn}}</option>
-        {{/each}}
-        </select> <br>
-        {{/each}}
-    </form>
-</div>
-
+    <div class="questionnaire-header mdl-layout__header">
+        <h2>Questionnaire</h2>
+    </div>
+    <div class="questionnaire-form mdl-layout--fixed-drawer">
+        <form id="questionnaire" class="mdl-cell">
+            {{#each questionData}}
+            <strong>{{dataValues.id}}.</strong>
+            {{dataValues.questionEn}} <br>
+            <select id="responseDropDown">
+            {{#each dataValues.AuxOptions}}
+            <option value="{{id}}">{{optionEn}}</option>
+            {{/each}}
+            </select> <br>
+            {{/each}}
+            <br>
+            <input type="submit" value="Submit" id="submit-button"></input>
+            <br>
+        </form>
+    </div>
+<script>
+    
+</script>
