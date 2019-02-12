@@ -21,6 +21,7 @@ const $cardCreateQuestionnaireTitle = $(".quest-card__questionnaire__title");
 const $containerQuestions = $("#container__questions > div");
 const $cardListQuestionnaire = $(".quest-card__list-questionnaires");
 const $cardQuestionnaireTitle = $("#input-questionnaire-name");
+const $cardQuestions = $(".quest-card__list--questions")
 
 //fields in Questionnaire Detail Card
 const $fieldsQuestionnaireDetail = $(".quest-card__questionnaire > div > form > .mdl-textfield")
@@ -88,57 +89,28 @@ var handlers = {
     console.log('start refresh')
     api.getQuestionnaires().then(function (data) {
 
-      let object = data.questionnaires;
+      var object = data.questionnaires;
       for (let o in object) {
-        var $item = () => {
-          var $span1 = $("<span>")
-            .text(object[o].name)
 
-          var $span2 = $("<span>")
-            .attr({
-              class: "mdl-list__item-text-body",
-              "data-id": object[o].id
-            })
-            .text(object[o].type + " | " + object[o].description);
+        let html =    '<li class="mdl-list__item mdl-list__item--two-line" "data-id": ' + object[o].id + '>'
+                      + '<span class="mdl-list__item-primary-content" "data-id": ' + object[o].id + '>'
+                      + '<i class="material-icons">question_answer</i>'
+                      + '<span>' + object[o].name + '</span>'
+                      + '<span class="mdl-list__item-sub-title "data-id":' + object[o].id + ">" + object[o].type + " | " + object[o].description +'</span>'
+                      + '</span>'
+                      + '<span class="mdl-list__item-secondary-content" "data-id": ' + object[o].id + '>'
+                      + '<span class="mdl-list__item-secondary-info">Actor</span>'
+                      + '<a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">check_box</i></a>'
+                      + '</span>'
+                      + '</li>'
 
-          var $i = $("<i>")
-            .attr("class", "material-icons")
-            .text("question_answer");
-
-          var $span = $("<span>")
-            .attr({
-              class: "mdl-list__item-primary-content",
-              "data-id": object[o].id
-            })
-            .append($i, $span1, $span2)
-
-
-          var $a2 = $("<a>")
-            .html('<i class="material-icons">check_box</i>')
-
-          var $span3 = $("<span>")
-            .attr({
-              class: "mdl-list__item-secondary-content",
-              "data-id": object[o].id
-            }).append($a2)
-
-
-          var $li = $("<li>")
-            .attr({
-              class: "mdl-list__item mdl-list__item--three-line",
-              "data-id": object[o].id
-            })
-            .append($span, $span3)
-
-
-
-          // console.log($li)
-          return $li
+        $questionnaireList.append(html)
         }
         // $questionnaireList.empty();
-        $questionnaireList.append($item)
-      }
-    });
+        
+      });
+    // });
+   
   },
   newQuestionnaire() {
     $fieldsQuestionnaireDetail.removeClass('is-dirty')
@@ -179,9 +151,8 @@ var handlers = {
   },
 
   listedQuestionnaire() {
-    // console.log($(this));
+    // FIX IT: HOW TO GET THE ID FROM THE LIST
     selectedId = 1;
-    // console.log(selectedId)
 
     $cardCreateQuestionnaire.removeClass('hidden');
     $btnCreateQuestionnaire.addClass('hidden');
@@ -209,21 +180,86 @@ var handlers = {
       $btnEditQuestionnaire.removeClass('hidden');
       $btnSaveQuestionnaire.addClass('hidden');
 
-      
-      handlers.displayQuestions();
+      handlers.getQuestions(response.questionnaires[0]);
     })
   },
 
-  displayQuestions() {
-    let html = '<ul class="demo-list-icon mdl-list">' +
-      '<li class="mdl-list__item">' +
-      '<span class="mdl-list__item-primary-content">' +
-      '</span>' +
-      '</li>' +
-      '</ul>'
+  getQuestions(data) {
+      console.log(data)
+      var object = data.questions;
+      for (let o in object) {
+      let html =  '<li class="mdl-list__item mdl-list__item--three-line">'
+                + '<span class="mdl-list__item-primary-content">'
+                + '<i class="material-icons mdl-list__item-avatar">create</i>'
+                + '<span>' + 'Question ' + object[o].id + ' | type: ' + object[o].type + '</span>'
+                + '<span class="mdl-list__item-text-body">'
+                + object[o].questionEn
+                + '</span>'
+                + '</span>'
+                + '<span class="mdl-list__item-secondary-content">'
+                + '<a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>'
+                + '</span>'
+                + '</li>'
+      
+    $cardQuestions.append(html)
+
+      }
+    // console.log('appended')
+    console.log('get questions')
+    // handlers.displayQuestions();
+
+      // for (let o in object) {
+      //   var $item = () => {
+      //     var $span1 = $("<span>")
+      //       .text(object[o].name)
+
+      //     var $span2 = $("<span>")
+      //       .attr({
+      //         class: "mdl-list__item-text-body",
+      //         "data-id": object[o].id
+      //       })
+      //       .text(object[o].type + " | " + object[o].description);
+
+      //     var $i = $("<i>")
+      //       .attr("class", "material-icons")
+      //       .text("question_answer");
+
+      //     var $span = $("<span>")
+      //       .attr({
+      //         class: "mdl-list__item-primary-content",
+      //         "data-id": object[o].id
+      //       })
+      //       .append($i, $span1, $span2)
 
 
-  }
+      //     var $a2 = $("<a>")
+      //       .html('<i class="material-icons">check_box</i>')
+
+      //     var $span3 = $("<span>")
+      //       .attr({
+      //         class: "mdl-list__item-secondary-content",
+      //         "data-id": object[o].id
+      //       }).append($a2)
+
+
+      //     var $li = $("<li>")
+      //       .attr({
+      //         class: "mdl-list__item mdl-list__item--three-line",
+      //         "data-id": object[o].id
+      //       })
+      //       .append($span, $span3)
+
+
+
+      //     // console.log($li)
+      //     return $li
+      //   }
+      //   // $questionnaireList.empty();
+      //   $questionnaireList.append($item)
+      // }
+    // });
+    
+  },
 
 
 }

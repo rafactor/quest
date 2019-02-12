@@ -3,8 +3,8 @@
 
 
       <div class="mdl-card mdl-cell mdl-cell--4-col quest-card">
-         <div class="quest-card__list>
-            <h6 class="quest-card__title">Questionnaires</h6>
+         <div class="quest-card__list">
+            <h5 class="quest-card__title">Questionnaires</h5>
             <!-- Colored FAB button with ripple -->
             <button id="btn-create-questionnaire"
                class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored quest-button--top-right">
@@ -23,7 +23,7 @@
 
       <div class="mdl-card mdl-cell mdl-cell--4-col quest-card">
          <div class="quest-card__questionnaire hidden">
-            <h6 class="quest-card__title">Questionnaire</h6>
+            <h5 class="quest-card__title">Questionnaire</h5>
             <button id="btn-close-questionnaire" class="mdl-button mdl-js-button quest-button--top-right">
                <i class="material-icons">close</i>
             </button>
@@ -41,20 +41,8 @@
             <h5 class="quest-card__title">Questions</h5>
 
             <div class="questions-list">
-               <ul class="mdl-list">
-                  <li>
-                  <li class="mdl-list__item mdl-list__item--three-line questionnaire-listed">
-                     <span class="mdl-list__item-primary-content" data-id={{id}}>
-                        <i class="material-icons">question_answer</i>
-                        <span>Express Entry</span>
-                        <span class="mdl-list__item-text-body">
-                           Tipo| description
-                        </span>
-                     </span>
-                     <span class="mdl-list__item-secondary-content" data-id={{id}}>
-                        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">check_box</i></a>
-                     </span>
-                  </li>
+               <ul class="mdl-list quest-card__list--questions r">
+                 
                </ul>
             </div>
          </div>
