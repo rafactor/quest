@@ -4,7 +4,7 @@ console.log('admin')
 
 const $questionnaireList = $(".quest-card__list--questionnaires")
 
-
+const $btnButtons = $(".mdl-button--raised")
 const $btnSubmitQuestionnaire = $("#questionnaire-submit");
 const $btnEditQuestionnaire = $("#questionnaire-edit");
 const $btnSaveQuestionnaire = $("#questionnaire-save");
@@ -16,11 +16,15 @@ const $btnCloseQuestionnaire = $("#btn-close-questionnaire");
 const $btnListedQuestionnaire = $('.quest-card__list--questionnaires > li');
 // const $liListedQuestionnaire = $('.quest-card__list--questionnaires > li > span')
 
-const $cardCreateQuestionnaire = $(".quest-card__questionnaire");
+const $cardCreateQuestionnaire = $(".quest-card__container");
 const $cardCreateQuestionnaireTitle = $(".quest-card__questionnaire__title");
 const $containerQuestions = $("#container__questions > div");
+
+// Questionnaires Block
 const $cardListQuestionnaire = $(".quest-card__list-questionnaires");
 const $cardQuestionnaireTitle = $("#input-questionnaire-name");
+
+//Questions Block
 const $cardQuestions = $(".quest-card__list--questions")
 
 //fields in Questionnaire Detail Card
@@ -104,40 +108,32 @@ var handlers = {
           '</span>' +
           '</li>'
 
-        let $span = $("<div>")
-        $span
-          .text(object[o].name )
-          .attr({
-            class:"mdl-list__item-sub-title",
-            "data-id":object[o].id
-          })
-
         $questionnaireList.append(html)
       }
-      // $questionnaireList.empty();
-
     });
-    // });
-
   },
+
   newQuestionnaire() {
-    $fieldsQuestionnaireDetail.removeClass('is-dirty')
-    $inputsQuestionnaireDetail.attr('disabled', false);
+
+    //Display the form and enable fields
+    $cardCreateQuestionnaire.removeClass('hidden');
+    $fieldsQuestionnaireDetail
+      .removeClass('is-dirty')
+      .attr('disabled', false)
     $toogleQuestionnaireActive.attr('disabled', false);
 
-    $cardCreateQuestionnaire.removeClass('hidden');
+    //clear fields
+    $inputQuestionnaireName.val("")
+    $inputQuestionnaireCode.val("")
+    $inputQuestionnaireType.val("")
+    $inputQuestionnaireDescription.val("")
+
+    // $cardCreateQuestionnaire.removeClass('hidden');
     $cardCreateQuestionnaireTitle.html('Create Questionnaire')
 
-    $btnCreateQuestionnaire.addClass('hidden');
+    // hide all buttons and display submit
+    $btnButtons.addClass('hidden');
     $btnSubmitQuestionnaire.removeClass('hidden');
-    $btnSaveQuestionnaire.addClass('hidden');
-    $btnEditQuestionnaire.addClass('hidden');
-
-    $inputQuestionnaireName.val("").attr('disabled', false);
-    $inputQuestionnaireType.val("").attr('disabled', false);
-    $inputQuestionnaireCode.val("").attr('disabled', false);
-    $inputQuestionnaireDescription.val("").attr('disabled', false);
-    $toogleQuestionnaireActive.attr('disabled', false)
   },
 
   submitQuestionnaire() {
@@ -146,9 +142,10 @@ var handlers = {
       name: $inputQuestionnaireName.val().trim(),
       code: $inputQuestionnaireCode.val().trim(),
       type: $inputQuestionnaireType.val().trim(),
-      // description: inputQuestionnaireDescription.value.trim(),
+      description: $inputQuestionnaireDescription.val().trim(),
       active: ($toogleQuestionnaireActive.hasClass("is-checked")) ? true : false,
     };
+    console.log(body)
     api.postQuestionnaire(body);
     window.location.reload();
   },
@@ -156,14 +153,14 @@ var handlers = {
   closeQuestionnaireForm() {
     $cardCreateQuestionnaire.addClass('hidden');
     $btnCreateQuestionnaire.removeClass('hidden');
+    $cardQuestions
+      .empty()
+      .addClass('hidden');
   },
 
   listedQuestionnaire() {
-    var target = $( event.target );
+    var target = $(event.target);
     selectedId = target.attr("data-id");
-
-    console.log(target)
-    console.log(selectedId)
 
     $cardCreateQuestionnaire.removeClass('hidden');
     $btnCreateQuestionnaire.addClass('hidden');
@@ -171,27 +168,33 @@ var handlers = {
 
     //call the api and populate fields
     api.getQuestionnaire(selectedId).then(response => {
-      console.log(response.questionnaires)
-      $fieldsQuestionnaireDetail.addClass('is-dirty')
-      $inputsQuestionnaireDetail.attr('disabled', 'disabled');
+
+
+      //show questionnaires fields disabled and dirty (means the title is blue on top of the field)
+      $fieldsQuestionnaireDetail
+        .addClass('is-dirty')
+        .attr('disabled', 'disabled');
       $toogleQuestionnaireActive.attr('disabled', 'disabled');
 
+      //populate fields with selected questionnaires attributes
       $inputQuestionnaireName.val(response.questionnaires[0].name)
       $inputQuestionnaireCode.val(response.questionnaires[0].code)
       $inputQuestionnaireType.val(response.questionnaires[0].type)
       $inputQuestionnaireDescription.val(response.questionnaires[0].description)
-      // $toogleQuestionnaireActive.val(response.questionnaires[0].active)
       if (response.questionnaires[0].active === false) {
         $toogleQuestionnaireActive.removeClass("is-checked");
       } else {
         $toogleQuestionnaireActive.addClass("is-checked");
       }
 
-      $btnSubmitQuestionnaire.addClass('hidden');
+      //hide all buttons and display only edit
+      $btnButtons.addClass('hidden');
       $btnEditQuestionnaire.removeClass('hidden');
-      $btnSaveQuestionnaire.addClass('hidden');
 
       handlers.getQuestions(response.questionnaires[0]);
+
+      //Show Questions Card
+      $cardQuestions.removeClass('hidden');
     })
   },
 
@@ -215,64 +218,7 @@ var handlers = {
       $cardQuestions.append(html)
 
     }
-    // console.log('appended')
-    console.log('get questions')
-    // handlers.displayQuestions();
-
-    // for (let o in object) {
-    //   var $item = () => {
-    //     var $span1 = $("<span>")
-    //       .text(object[o].name)
-
-    //     var $span2 = $("<span>")
-    //       .attr({
-    //         class: "mdl-list__item-text-body",
-    //         "data-id"= object[o].id
-    //       })
-    //       .text(object[o].type + " | " + object[o].description);
-
-    //     var $i = $("<i>")
-    //       .attr("class", "material-icons")
-    //       .text("question_answer");
-
-    //     var $span = $("<span>")
-    //       .attr({
-    //         class: "mdl-list__item-primary-content",
-    //         "data-id"= object[o].id
-    //       })
-    //       .append($i, $span1, $span2)
-
-
-    //     var $a2 = $("<a>")
-    //       .html('<i class="material-icons">check_box</i>')
-
-    //     var $span3 = $("<span>")
-    //       .attr({
-    //         class: "mdl-list__item-secondary-content",
-    //         "data-id"= object[o].id
-    //       }).append($a2)
-
-
-    //     var $li = $("<li>")
-    //       .attr({
-    //         class: "mdl-list__item mdl-list__item--three-line",
-    //         "data-id"= object[o].id
-    //       })
-    //       .append($span, $span3)
-
-
-
-    //     // console.log($li)
-    //     return $li
-    //   }
-    //   // $questionnaireList.empty();
-    //   $questionnaireList.append($item)
-    // }
-    // });
-
   },
-
-
 }
 
 handlers.getQuestionnaires();
