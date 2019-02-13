@@ -120,23 +120,24 @@ module.exports = {
     });
   },
 
-  delete: (id) => {
-    console.log(id)
+  delete: (idDelete) => {
+    console.log('delete:' + idDelete)
     return new Promise((resolve, reject) =>{
-      db.Questionnaires.destroy({
+      db.Questionnaire.destroy({
         where: {
-          id: id
+          id: parseInt(idDelete)
         }
-      }).then(data => {
+      }).then(() => {
         const response = {
           message: 'Questionnaire deleted',
           request: {
-            type: 'POST',
+            type: 'DELETE',
             url: 'http://localhost:3000/questionnaires'
           }
-        }
+        };
         resolve(response);
-      }).catch(reject);
+      })
+      .catch(reject);
       
     });
   }

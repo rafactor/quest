@@ -50,8 +50,12 @@ router.put("/questionnaires/", (req, res) => {
 
 router.delete("/questionnaires/:id", function (req, res) {
   const id = parseInt(req.params.id)
+  console.log('delete response')
+
   questionnaire.delete(id).then(function (response) {
+    console.log(response)
     res.json(response)
+
   }).catch(function (err) {
     res.status(500).json({
       error: err
