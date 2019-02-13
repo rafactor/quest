@@ -3,10 +3,17 @@
     // margin-top: 30rem;
 }
 
+.mdl-list__item-avatar{
+    font-size: 24px !important;
+    padding-top: 8px;
+    text-align: center;
+    
+}
+
 .quest-card{
-    position: absolute;
+    // position: absolute;
     // max-width: 400px;
-    max-height: 800px;
+    height: 80vh;
 
     &__container{
         padding: 1rem;
@@ -21,15 +28,27 @@
     }
 
     &__title{
-        color: $primary;
+        background-color: $primary-color;
+        color: $primary-color-text;
+        padding: 40px 20px 20px 20px;
+        margin: 0;
+        border-top-right-radius: 20px;
     }
 
     &__list{
         width: 100%;
 
-        &--questionnaires > li{
-            cursor: pointer;
+        &--questionnaires {
+            // background-color: yellow;
+            padding: 0;
+
+            & > li {
+                cursor: pointer;
+            }
         }
+        // &--questionnaires > li{
+           
+        // }
     }
 
     a {
@@ -39,7 +58,9 @@
     }
 }
 
-
+.quest-button.mdl-button{
+    background-color: $accent-color;
+}
 
 // .quest-create {
 //     float: right;

@@ -1,6 +1,8 @@
-@import "pages/index";
-@import "pages/admin";
+@import "common/palette";
 
 @import "common/base";
 @import "common/utilities";
 
+
+@import "pages/index";
+@import "pages/admin";

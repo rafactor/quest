@@ -110,13 +110,10 @@ var handlers = {
 
         let html = '<li class="mdl-list__item mdl-list__item--two-line" data-id=' + object[o].id + '>' +
           '<span class="mdl-list__item-primary-content" data-id=' + object[o].id + '>' +
-          '<i class="material-icons" data-id=' + object[o].id + '>question_answer</i>' +
+          '<i class="material-icons mdl-list__item-avatar" data-id=' + object[o].id + '>question_answer</i>' +
           '<span data-id=' + object[o].id + '>' + object[o].name + '</span>' +
-          '<span class="mdl-list__item-sub-title" data-id=' + object[o].id + ">" + object[o].type + " | " + object[o].description + '</span>' +
+          '<span class="mdl-list__item-sub-title" data-id=' + object[o].id + ">" + object[o].type + " | " + object[o].code + '</span>' +
           '</span>' +
-          '<span class="mdl-list__item-secondary-content" data-id=' + object[o].id + '>' +
-          '<span class="mdl-list__item-secondary-info" data-id=' + object[o].id + '></span>' +
-          '<a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">check_box</i></a>' +
           '</span>' +
           '</li>'
 
@@ -221,14 +218,11 @@ var handlers = {
     for (let o in object) {
       let html = '<li class="mdl-list__item mdl-list__item--three-line">' +
         '<span class="mdl-list__item-primary-content">' +
-        '<i class="material-icons mdl-list__item-avatar">create</i>' +
-        '<span>' + 'Question ' + object[o].id + ' | type: ' + object[o].type + '</span>' +
+        // '<i class="material-icons mdl-list__item-avatar">create</i>' +
+        '<span>' + 'Question ' + object[o].id + '</span>' +
         '<span class="mdl-list__item-text-body">' +
         object[o].questionEn +
         '</span>' +
-        '</span>' +
-        '<span class="mdl-list__item-secondary-content">' +
-        '<a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>' +
         '</span>' +
         '</li>'
 
