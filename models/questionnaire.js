@@ -20,6 +20,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
+    description: {
+      type: DataTypes.TEXT
+    },
     version: {
       type: DataTypes.DECIMAL(10, 2),
       defaultValue: 1.0

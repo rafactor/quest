@@ -3,17 +3,64 @@
     // margin-top: 30rem;
 }
 
+.mdl-list__item-avatar{
+    font-size: 24px !important;
+    padding-top: 8px;
+    text-align: center;
+    
+}
+
 .quest-card{
-    position: absolute;
+    // position: absolute;
     // max-width: 400px;
-    max-height: 800px;
+    height: 80vh;
 
     &__container{
         padding: 1rem;
+    };
+
+    &__questions{
+
+    };
+
+    &__questionnaire{
+
+    }
+
+    &__title{
+        background-color: $primary-color;
+        color: $primary-color-text;
+        padding: 40px 20px 20px 20px;
+        margin: 0;
+        border-top-right-radius: 20px;
+    }
+
+    &__list{
+        width: 100%;
+
+        &--questionnaires {
+            // background-color: yellow;
+            padding: 0;
+
+            & > li {
+                cursor: pointer;
+            }
+        }
+        // &--questionnaires > li{
+           
+        // }
+    }
+
+    a {
+        text-decoration: none;
+        display: block;
+
     }
 }
 
-
+.quest-button.mdl-button{
+    background-color: $accent-color;
+}
 
 // .quest-create {
 //     float: right;

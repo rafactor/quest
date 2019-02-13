@@ -6,13 +6,15 @@ var questionnaire = require("../controllers/questionnaire-controller");
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-router.get("/", function (req, res) {
+router.get("/", function(req, res) {
   res.render("index", {});
 });
 
-router.get("/login", function (req, res) {
+router.get("/login", function(req, res) {
   if (req.user) {
-    res.render("members", {});
+    // console.log('hehe')
+    // console.log(req.user.User.email)
+    res.render("admin", {});
   }
   res.render("login", {
     registered: true
@@ -22,7 +24,7 @@ router.get("/login", function (req, res) {
 // Here we've add our isAuthenticated middleware to this route.
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
 
-router.get("/members", isAuthenticated, function (req, res) {
+router.get("/members", isAuthenticated, function(req, res) {
   if (req.user) {
     res.render("members", {});
   } else {
@@ -32,15 +34,19 @@ router.get("/members", isAuthenticated, function (req, res) {
   }
 });
 
-
-router.get("/admin", isAuthenticated, function (req, res) {
+router.get("/admin", function(req, res) {
   questionnaire
     .getAll()
-    .then(function (response) {
+    .then(function(response) {
       res.render("admin", response);
     })
-    .catch(function (err) {
-      res.status(500).end();
+    .catch(function(err) {
+      res
+        .status(500)
+        .json({
+          error: err
+        })
+        .end();
     });
 });
 

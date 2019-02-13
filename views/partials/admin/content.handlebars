@@ -3,32 +3,31 @@
 
 
       <div class="mdl-card mdl-cell mdl-cell--4-col quest-card">
-         <div>
-            <h4 class="quest-card__title">Questionnaires</h4>
+         <div class="quest-card__list">
+            <h5 class="quest-card__title">Questionnaires List</h5>
             <!-- Colored FAB button with ripple -->
-               <button id="btn-create-questionnaire" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored quest-button--top-right">
-                  <i class="material-icons">add</i>
-               </button>
+            <button id="btn-create-questionnaire"
+               class="quest-button  mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab quest-button--top-right">
+               <i class="material-icons">add</i>
+            </button>
 
-               <div id="questionnaires-list-container">
-                  <ul class="demo-list-three mdl-list">
-                     {{#each questionnaires}}
-                     {{> admin/components/questionnaire-list}}
-                     {{/each}}
-                  </ul>
-               </div>
+            <div>
+               <ul class="quest-card__list--questionnaires">
+              
+               </ul>
+            </div>
          </div>
       </div>
-      
+
       <div class="mdl-card mdl-cell mdl-cell--4-col quest-card">
-         <div id="quest-card__create-questionnaire" class="hidden">
-            <h4 id="quest-card__create-questionnaire__title" class="quest-card__title">Create new questionnaire</h4>
-            <button id="btn-close-questionnaire" class="mdl-button mdl-js-button quest-button--top-right">
+         <div class="quest-card__questionnaire">
+            <h5 class="quest-card__title">Selected Questionnaire</h5>
+            <button id="btn-close-questionnaire" class="mdl-button quest-button mdl-button--fab mdl-button--mini-fab mdl-js-button quest-button--top-right hidden">
                <i class="material-icons">close</i>
             </button>
-         
 
-            <div class="quest-card__container">
+
+            <div class="quest-card__container hidden">
 
                {{> admin/components/questionnaire-create}}
 
@@ -36,7 +35,15 @@
          </div>
       </div>
       <div class="mdl-card mdl-cell mdl-cell--4-col quest-card">
+         <div class="quest-card__questions">
+            <h5 class="quest-card__title">Questions</h5>
 
+            <div class="questions-list">
+               <ul class="mdl-list quest-card__list--questions">
+                 
+               </ul>
+            </div>
+         </div>
       </div>
    </div>
 

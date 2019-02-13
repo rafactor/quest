@@ -8,9 +8,17 @@ body {
     box-sizing: border-box;
 }
 
-.mdl-layout__content{
-    // max-width: 160rem;
-    width: 100%;
-    margin: 0 auto;
-    background-color: aqua;
+.mdl-layout__content {}
+
+.mdl-layout {
+
+    &__content {
+        width: 100%;
+        margin: 0 auto;
+        // max-width: 120rem;
+    }
+}
+
+.quest-header.mdl-layout__header{
+    background-color: $primary-color-dark;
 }
