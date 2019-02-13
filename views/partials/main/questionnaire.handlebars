@@ -6,8 +6,8 @@
                 <span class="mdl-layout__title">Questionnaire</span>
                 <div class="mdl-layout-spacer"></div>
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link">Nav Link 1</a>
-                    <a class="mdl-navigation__link">Nav Link 2</a>
+                    <a href="index.html" class="mdl-navigation__link">Home</a>
+                    <a href="about page link" class="mdl-navigation__link">About</a>
                 </nav>
             </div>
     </header>
@@ -15,8 +15,8 @@
     <div class="mdl-layout__drawer">
         <span class="mdl-layout__title">Navigation</span>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link">Nav Link 1</a>
-            <a class="mdl-navigation__link">Nav Link 2</a>
+            <a href="index.html" class="mdl-navigation__link">Home</a>
+            <a href="about page link" class="mdl-navigation__link">About</a>
         </nav>
     </div>
 
@@ -26,13 +26,16 @@
                 <div class="mdl-cell mdl-cell--11-col">
                     <br>
                     {{#each questionData}}
+                    <div class="{{#if dataValues.isConditional}} hidden {{/if}}" data-parent="{{dataValues.conditionalQuestionId}}">
+                    
                     <strong>{{dataValues.id}}.</strong>
                     <strong>{{dataValues.questionEn}}</strong> <br>
-                    <select id="responseDropDown" class="mdl-cell">
+                    <select id="responseDropDown{{dataValues.id}}" class="mdl-cell responseDropDown" data-question-id="{{dataValues.id}}">
                     {{#each dataValues.AuxOptions}}
                     <option value="{{id}}">{{optionEn}}</option>
                     {{/each}}
                     </select> <br> <br>
+                    </div>
                     {{/each}}
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
                     <br>
@@ -42,6 +45,4 @@
     </main>
 </div>
 
-<script>
-    
-</script>
+
