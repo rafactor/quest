@@ -1,3 +1,3 @@
-$("#responseDropDown").change(function(){
+$(".responseDropDown").change(function(){
     $(this).removeClass("hidden")
 });
