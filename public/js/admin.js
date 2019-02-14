@@ -282,3 +282,10 @@ $btnCloseQuestionnaire.on("click", handlers.closeQuestionnaireForm);
 $btnSaveQuestionnaire.on("click", handlers.saveQuestionnaire);
 
 $($questionnaireList).on("click", $btnListedQuestionnaire, handlers.listedQuestionnaire)
+
+// $(window).on('resize', function(){
+//       var win = $(this); //this = window
+//       var cardHeight
+//       if (win.height() >= 820) { /* ... */ }
+//       if (win.width() >= 1280) { /* ... */ }
+// });
