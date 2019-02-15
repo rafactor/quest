@@ -10,9 +10,12 @@ const $btnEditQuestionnaire = $("#questionnaire-edit");
 const $btnSaveQuestionnaire = $("#questionnaire-save");
 const $btnCancelQuestionnaire = $("#questionnaire-cancel");
 const $btnDeleteQuestionnaire = $("#questionnaire-delete");
+const $btnEditQuestions = $('.quest-card__list--questions > li > a')
+
 
 
 const $btnCreateQuestionnaire = $("#btn-create-questionnaire");
+const $btnCreateQuestions = $("#btn-create-questions");
 const $btnCloseQuestionnaire = $("#btn-close-questionnaire");
 const $btnListedQuestionnaire = $('.quest-card__list--questionnaires > li');
 // const $liListedQuestionnaire = $('.quest-card__list--questionnaires > li > span')
@@ -162,6 +165,8 @@ var handlers = {
   closeQuestionnaireForm() {
     $cardCreateQuestionnaire.addClass('hidden');
     $btnCloseQuestionnaire.addClass('hidden');
+    $btnEditQuestions.addClass('hidden');
+
     $btnCreateQuestionnaire.removeClass('hidden');
     $cardQuestions
       .empty()
@@ -174,7 +179,8 @@ var handlers = {
 
     $cardCreateQuestionnaire.removeClass('hidden');
     $btnCreateQuestionnaire.addClass('hidden');
-    $cardCreateQuestionnaireTitle.html('View Questionnaire')
+    $cardCreateQuestionnaireTitle.html('View Questionnaire');
+    $btnCreateQuestions.addClass('hidden');
     
 
     //call the api and populate fields
@@ -223,6 +229,8 @@ var handlers = {
         object[o].questionEn +
         '</span>' +
         '</span>' +
+        '<a class="mdl-list__item-secondary-action hidden" href="#"><i class="material-icons">edit</i></a>'
+
         '</li>'
 
       $cardQuestions.append(html)
@@ -240,6 +248,9 @@ var handlers = {
     $btnButtons.addClass('hidden');
     $btnSaveQuestionnaire.removeClass('hidden');
     $btnDeleteQuestionnaire.removeClass('hidden');
+    $btnCreateQuestions.removeClass('hidden');
+    $('.quest-card__list--questions > li > a').removeClass('hidden')
+    console.log('show')
   },
 
   deleteQuestionnaire() {

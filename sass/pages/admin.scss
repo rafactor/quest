@@ -24,9 +24,10 @@
 
         & > .quest-card__title {
             position: fixed;
-        
             width: 100%;
-        }
+        };
+
+
     };
 
     &__questionnaire{
@@ -51,6 +52,10 @@
             & > li {
                 cursor: pointer;
             }
+        }
+
+        &--questions{
+                margin-top: 80px;
         }
         // &--questionnaires > li{
            

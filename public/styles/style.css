@@ -80,6 +80,8 @@ body {
     padding: 0; }
     .quest-card__list--questionnaires > li {
       cursor: pointer; }
+  .quest-card__list--questions {
+    margin-top: 80px; }
 
 .quest-card a {
   text-decoration: none;
