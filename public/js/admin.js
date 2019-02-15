@@ -20,12 +20,15 @@ const $btnCloseQuestionnaire = $("#btn-close-questionnaire");
 const $btnListedQuestionnaire = $('.quest-card__list--questionnaires > li');
 // const $liListedQuestionnaire = $('.quest-card__list--questionnaires > li > span')
 
-const $cardCreateQuestionnaire = $(".quest-card__container");
-const $cardCreateQuestionnaireTitle = $(".quest-card__questionnaire__title");
+//quest-card--questionnaire
+const $cardQuestionnaire = $('.quest-card--questionnaire');
+const $cardQuestionDetail = $('.quest-card__detailed-questions');
+const $containerCreateQuestionnaire = $(".quest-card__container");
+const $titleCreateQuestionnaireTitle = $(".quest-card__questionnaire__title");
 const $containerQuestions = $("#container__questions > div");
 
 // Questionnaires Block
-const $cardListQuestionnaire = $(".quest-card__list-questionnaires");
+// const $cardListQuestionnaire = $(".quest-card__list-questionnaires");
 const $cardQuestionnaireTitle = $("#input-questionnaire-name");
 
 //Questions Block
@@ -127,7 +130,7 @@ var handlers = {
 
   newQuestionnaire() {
     //Display the form and enable fields
-    $cardCreateQuestionnaire.removeClass('hidden');
+    $containerCreateQuestionnaire.removeClass('hidden');
     $btnCloseQuestionnaire.removeClass('hidden');
     $fieldsQuestionnaireDetail
       .removeClass('is-dirty')
@@ -140,8 +143,8 @@ var handlers = {
     $inputQuestionnaireType.val("")
     $inputQuestionnaireDescription.val("")
 
-    // $cardCreateQuestionnaire.removeClass('hidden');
-    $cardCreateQuestionnaireTitle.html('Create Questionnaire')
+    // $containerCreateQuestionnaire.removeClass('hidden');
+    $titleCreateQuestionnaireTitle.html('Create Questionnaire')
 
     // hide all buttons and display submit
     $btnButtons.addClass('hidden');
@@ -163,9 +166,11 @@ var handlers = {
   },
 
   closeQuestionnaireForm() {
-    $cardCreateQuestionnaire.addClass('hidden');
+    $containerCreateQuestionnaire.addClass('hidden');
     $btnCloseQuestionnaire.addClass('hidden');
     $btnEditQuestions.addClass('hidden');
+    $cardQuestionnaire.removeClass('hidden');
+    $cardQuestionDetail.addClass('hidden');
 
     $btnCreateQuestionnaire.removeClass('hidden');
     $cardQuestions
@@ -177,9 +182,10 @@ var handlers = {
     var target = $(event.target);
     selectedId = target.attr("data-id");
 
-    $cardCreateQuestionnaire.removeClass('hidden');
+    $containerCreateQuestionnaire.removeClass('hidden');
+    $btnCloseQuestionnaire.removeClass('hidden');
     $btnCreateQuestionnaire.addClass('hidden');
-    $cardCreateQuestionnaireTitle.html('View Questionnaire');
+    $titleCreateQuestionnaireTitle.html('View Questionnaire');
     $btnCreateQuestions.addClass('hidden');
     
 
@@ -207,7 +213,7 @@ var handlers = {
       //hide all buttons and display only edit
       $btnButtons.addClass('hidden');
       $btnEditQuestionnaire.removeClass('hidden');
-
+      $cardQuestionDetail.addClass('hidden');
       handlers.getQuestions(response.questionnaires[0]);
 
       //Show Questions Card
@@ -248,6 +254,9 @@ var handlers = {
     $btnButtons.addClass('hidden');
     $btnSaveQuestionnaire.removeClass('hidden');
     $btnDeleteQuestionnaire.removeClass('hidden');
+    $btnCreateQuestions.removeClass('hidden');
+    $cardQuestionnaire.addClass('hidden');
+    $cardQuestionDetail.removeClass('hidden');
     $btnCreateQuestions.removeClass('hidden');
     $('.quest-card__list--questions > li > a').removeClass('hidden')
     console.log('show')

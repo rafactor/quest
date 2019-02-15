@@ -1,0 +1,87 @@
+<!-- Textfield with Floating Label -->
+
+<form action="#">
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label questionnaire-input-width">
+    <input class="mdl-textfield__input" type="text" id="input-question-name" value="">
+    <label class="mdl-textfield__label" for="input-question-name">Question</label>
+  </div>
+
+  <!-- Select with floating label -->
+     {{!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+    <select class="mdl-textfield__input" id="input-question-type" name="type">
+      <option></option>
+      <option value="Date">Date</option>
+      <option value="Number">Number</option>
+      <option value="Text">Open text</option>
+      <option value="Option">Option</option>
+      <option value="String">Short Answer</option>
+      <option value="yesNo">Yes/No</option>
+    </select>
+    <label for="input-question-type" class="mdl-textfield__label questionnaire-input-width ">Type</label>
+     </div> --}}
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+        <input type="text" value="" class="mdl-textfield__input" id="sample4" readonly>
+        <input type="hidden" value="" name="sample4">
+        {{!-- <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i> --}}
+        <label for="sample4" class="mdl-textfield__label">Country</label>
+        <ul for="sample4" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+            <li class="mdl-menu__item" data-val="DEU">Germany</li>
+            <li class="mdl-menu__item" data-val="BLR">Belarus</li>
+            <li class="mdl-menu__item" data-val="RUS">Russia</li>
+        </ul>
+    </div>
+
+     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+        <input type="text" value="" class="mdl-textfield__input" id="sample4" readonly>
+        <input type="hidden" value="" name="sample4">
+        <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+        <label for="sample4" class="mdl-textfield__label">Country</label>
+        <ul for="sample4" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+            <li class="mdl-menu__item" data-val="DEU">Germany</li>
+            <li class="mdl-menu__item" data-val="BLR">Belarus</li>
+            <li class="mdl-menu__item" data-val="RUS">Russia</li>
+        </ul>
+    </div>
+
+
+  <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="toogle-questionnaire-active" id="label-active-switch">     
+    <input type="checkbox" id="toogle-questionnaire-active" class="mdl-switch__input" checked>
+    <span class="mdl-switch__label">Conditional</span>
+  </label>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+    <label class="mdl-textfield__label" for="sample4">Question ID of Conditional Question</label>
+    <span class="mdl-textfield__error">Input is not a number!</span>
+  </div>
+
+   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="sample3">
+    <label class="mdl-textfield__label" for="sample3">Conditional Answer</label>
+  </div>
+
+  <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="toogle-questionnaire-active" id="label-active-switch">     
+    <input type="checkbox" id="toogle-questionnaire-active" class="mdl-switch__input" checked>
+    <span class="mdl-switch__label">Status</span>
+  </label>
+
+<div class="quest-form-submit u-margin-top-medium u-center-text">
+  <button id="questionnaire-submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden" >
+    Submit
+  </button>
+   <button id="questionnaire-edit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden">
+    Edit
+  </button>
+   <button id="questionnaire-save" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden">
+    Save
+  </button>
+   <button id="questionnaire-cancel" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden">
+    Cancel
+  </button>
+     <button id="questionnaire-delete" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden">
+    Delete
+  </button>
+</div>
+</form>

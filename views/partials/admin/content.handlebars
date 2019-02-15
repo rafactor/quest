@@ -2,7 +2,7 @@
    <div class="mdl-grid questionnaires-grid">
 
 
-      <div class="mdl-card mdl-cell mdl-cell--4-col quest-card">
+      <div class="mdl-card mdl-cell mdl-cell--4-col quest-card quest-card--questionnaire">
          <div class="quest-card__list">
             <h5 class="quest-card__title">Questionnaires List</h5>
             <!-- Colored FAB button with ripple -->
@@ -45,6 +45,18 @@
                <ul class="mdl-list quest-card__list--questions">
 
                </ul>
+            </div>
+         </div>
+      </div>
+
+
+      <div class="mdl-card mdl-cell mdl-cell--4-col quest-card quest-card__detailed-questions hidden">
+         <div class="quest-card__detailed-questions">
+            <h5 class="quest-card__title">Question Detail</h5>
+
+            <div class="questions-list">
+               {{> admin/components/questions}}
+
             </div>
          </div>
       </div>

@@ -63,9 +63,11 @@ body {
 .quest-card__container {
   padding: 1rem; }
 
-.quest-card__questions > .quest-card__title {
-  position: fixed;
-  width: 100%; }
+.quest-card__questions {
+  overflow: auto; }
+  .quest-card__questions > .quest-card__title {
+    position: fixed;
+    width: 100%; }
 
 .quest-card__title {
   background-color: #009688;
