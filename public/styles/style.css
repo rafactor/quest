@@ -10,7 +10,8 @@ body {
   margin: 0 auto; }
 
 .quest-header.mdl-layout__header {
-  background-color: #00796B; }
+  background-color: #00796B;
+  height: 80px; }
 
 .u-center-text {
   text-align: center; }
@@ -61,6 +62,10 @@ body {
 
 .quest-card__container {
   padding: 1rem; }
+
+.quest-card__questions > .quest-card__title {
+  position: fixed;
+  width: 100%; }
 
 .quest-card__title {
   background-color: #009688;

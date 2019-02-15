@@ -123,7 +123,6 @@ var handlers = {
   },
 
   newQuestionnaire() {
-
     //Display the form and enable fields
     $cardCreateQuestionnaire.removeClass('hidden');
     $btnCloseQuestionnaire.removeClass('hidden');
@@ -268,7 +267,15 @@ var handlers = {
     api.updateQuestionnaire(body);
     window.location.reload();
   },
+  resize(){
+    var win = window.innerHeight; //this = window
 
+    var cardTitle = $('.quest-card__questions > .quest-card__title').clientHeight;
+    var card = win - 70 - 80
+
+    $('.mdl-card.quest-card').height(card);
+  //  $('.quest-list').overflow = auto;
+  }
 }
 
 handlers.getQuestionnaires();
@@ -283,9 +290,11 @@ $btnSaveQuestionnaire.on("click", handlers.saveQuestionnaire);
 
 $($questionnaireList).on("click", $btnListedQuestionnaire, handlers.listedQuestionnaire)
 
-// $(window).on('resize', function(){
-//       var win = $(this); //this = window
+$(document).ready(handlers.resize)
+$(window).on('resize', handlers.resize)
+    
+
+
 //       var cardHeight
 //       if (win.height() >= 820) { /* ... */ }
 //       if (win.width() >= 1280) { /* ... */ }
-// });

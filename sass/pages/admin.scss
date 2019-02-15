@@ -20,7 +20,13 @@
     };
 
     &__questions{
+        // overflow: auto;
 
+        & > .quest-card__title {
+            position: fixed;
+        
+            width: 100%;
+        }
     };
 
     &__questionnaire{
