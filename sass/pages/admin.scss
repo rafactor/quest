@@ -62,6 +62,9 @@
         // }
     }
 
+    &__input--100px{
+        width: 100px !important;
+    }
     a {
         text-decoration: none;
         display: block;
@@ -72,6 +75,7 @@
 .quest-button.mdl-button{
     background-color: $accent-color;
 }
+
 
 // .quest-create {
 //     float: right;
@@ -86,6 +90,8 @@
 .mdl-textfield.questionnaire-input-width{
     width: 100%;
 }
+
+
 
 .mdl-button.quest-button--top-right{
     position: absolute;

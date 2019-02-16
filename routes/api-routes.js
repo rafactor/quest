@@ -63,6 +63,17 @@ router.delete("/questionnaires/:id", function (req, res) {
   });
 });
 
+router.post("/questionnaires/:id/question", (req, res) => {
+  console.log('routing')
+console.log(res)
+  questionnaire.create(req).then(response => {
+    res.json(response)
+  }).catch(err => {
+    res.status(500).json({
+      error: err
+    }).end();
+  });
+});
 // router.put("/questionnaires", questionnaire.update);
 
 //for login

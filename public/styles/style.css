@@ -85,6 +85,9 @@ body {
   .quest-card__list--questions {
     margin-top: 80px; }
 
+.quest-card__input--100px {
+  width: 100px !important; }
+
 .quest-card a {
   text-decoration: none;
   display: block; }
