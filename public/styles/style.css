@@ -95,6 +95,9 @@ body {
 .quest-button.mdl-button {
   background-color: #FF9800; }
 
+#question-information {
+  margin: 10px 0 20px 0; }
+
 .mdl-textfield.questionnaire-input-width {
   width: 100%; }
 

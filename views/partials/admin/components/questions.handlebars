@@ -53,15 +53,15 @@
       </ul>
     </div>
 
-  <div class='question-information'>Does this question depend on the answer of a previous question?</div>
+  <div id='question-information'>Does this question depend on the answer to a previous question?</div>
 
   <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="toogle-conditional-active" id="label-conditional-switch">
     <input type="checkbox" id="toogle-conditional-active" class="mdl-switch__input" checked>
     <span class="mdl-switch__label">Conditional</span> 
-    <span class="mdl-switch__label" id="conditional-label"> | Provide information about the conditional question related: </span>
+    {{!-- <span class="mdl-switch__label" id="conditional-label"> </span> --}}
   </label>
 
-<div class="conditional">
+<div id="conditional-block" class="">
 
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label quest-card__input--100px">
     <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="conditional-question-id">
@@ -74,9 +74,12 @@
     <label class="mdl-textfield__label" for="conditional-answer">Conditional Answer</label>
   </div>
 </div>
+
+  <div id='question-information'>Inform the status of this question. Only active questions will be displayed.</div>
+
   <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="toogle-question-active" id="label-question-active-switch">
     <input type="checkbox" id="toogle-question-active" class="mdl-switch__input" checked>
-    <span class="mdl-switch__label">Status</span>
+    <span class="mdl-switch__label">Inactive</span>
   </label>
 
   <div class="quest-form-submit u-margin-top-medium u-center-text">

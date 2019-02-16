@@ -50,6 +50,20 @@ const $toogleQuestionnaireActiveLabel = $(
   "#label-active-switch > span.mdl-switch__label"
 );
 
+const $toogleQuestionActive = $("#label-question-active-switch");
+const $toogleQuestionActiveInput = $("#label-question-active-switch > input");
+const $toogleQuestionActiveLabel = $(
+  "#label-question-active-switch > span.mdl-switch__label"
+);
+
+const $toogleConditionalQuestion = $("#label-conditional-switch");
+const $toogleConditionalQuestionInput = $("#label-conditional-switch > input");
+const $toogleConditionalQuestionLabel = $(
+  "#label-conditional-switch > span.mdl-switch__label"
+);
+const $conditionalQuestionBlock = $('#conditional-block')
+
+
 var selectedId;
 
 var api = {
@@ -109,7 +123,7 @@ var api = {
 var handlers = {
   getQuestionnaires() {
     $questionnaireList.empty();
-    api.getQuestionnaires().then(function(data) {
+    api.getQuestionnaires().then(function (data) {
       var object = data.questionnaires;
       for (let o in object) {
         let html =
@@ -313,7 +327,7 @@ var handlers = {
 };
 
 var toogle = {
-  activeToggle() {
+  activeQuestionnaireToggle() {
     var target = $toogleQuestionnaireActiveLabel;
 
     if ($toogleQuestionnaireActiveInput.attr("disabled") !== "disabled") {
@@ -323,6 +337,36 @@ var toogle = {
         target.text("Inactive");
       } else {
         target.text("Active");
+      }
+    }
+  },
+
+  activeQuestionToggle() {
+    var target = $toogleQuestionActiveLabel;
+
+    if ($toogleQuestionActiveInput.attr("disabled") !== "disabled") {
+      var status = $(this).hasClass("is-checked");
+
+      if (status) {
+        target.text("Inactive");
+      } else {
+        target.text("Active");
+      }
+    }
+  },
+
+  conditionalToggle() {
+    var target = $toogleConditionalQuestionLabel;
+
+    if ($toogleConditionalQuestionInput.attr("disabled") !== "disabled") {
+      var status = $(this).hasClass("is-checked");
+
+      if (status) {
+        target.text("No, it is an independent question");
+        $conditionalQuestionBlock.removeClass('hidden');
+      } else {
+        target.text("Yes, it is a conditional question");
+        $conditionalQuestionBlock.addClass('hidden');
       }
     }
   }
@@ -347,7 +391,10 @@ $($questionnaireList).on(
 $(document).ready(handlers.resize);
 $(window).on("resize", handlers.resize);
 
-$($toogleQuestionnaireActive).on("click", toogle.activeToggle);
+$($toogleQuestionnaireActive).on("click", toogle.activeQuestionnaireToggle);
+$($toogleConditionalQuestion).on("click", toogle.conditionalToggle);
+$($toogleQuestionActive).on("click", toogle.activeQuestionToggle);
+
 
 //       var cardHeight
 //       if (win.height() >= 820) { /* ... */ }
