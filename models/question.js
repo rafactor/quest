@@ -24,7 +24,9 @@ module.exports = function(sequelize, DataTypes) {
     },
 
     isConditional: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
     },
 
     conditionalQuestionId: {

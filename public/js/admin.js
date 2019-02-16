@@ -311,6 +311,24 @@ var handlers = {
      $inputConditionalQuestionId.val(questions[id].conditionalQuestionId)
      $inputConditionalAnswer.val(questions[id].conditionalAnswer)
 
+     if (questions[id].isConditional === true) {
+      $toogleConditionalQuestion.addClass("is-checked");
+      $toogleConditionalQuestionLabel.text("Yes, it is a conditional question");
+      $conditionalQuestionBlock.removeClass('hidden');
+    } else {
+      console.log(questions[id].isConditional)
+      $toogleConditionalQuestion.removeClass("is-checked");
+      $toogleConditionalQuestionLabel.text("No, it is an independent question");
+      $conditionalQuestionBlock.addClass('hidden');
+    }
+
+    if (questions[id].status !== 'active') {
+      $toogleQuestionActive.removeClass("is-checked");
+      $toogleQuestionActiveLabel.text("Inactive");
+    } else {
+      $toogleQuestionActive.addClass("is-checked");
+      $toogleQuestionActiveLabel.text("Active");
+    }
 
   },
 
@@ -346,7 +364,8 @@ var handlers = {
 
     $inputsQuestionnaireDetail.attr("disabled", false);
     $inputsQuestionDetail.attr("disabled", false);
-    $inputsQuestionDetailConditional.attr("disabled", false);
+    $toogleConditionalQuestionInput.attr("disabled", false);
+    $toogleQuestionActiveInput.attr("disabled", false);
     $toogleQuestionnaireActiveInput.attr("disabled", false);
 
     $btnQuestionnaireButtons.addClass("hidden");
@@ -357,7 +376,7 @@ var handlers = {
     $cardQuestionDetail.removeClass("hidden");
     $btnCreateQuestions.removeClass("hidden");
     $(".quest-card__list--questions > li > a").removeClass("hidden");
-    console.log("show");
+    // console.log("show");
   },
 
   deleteQuestionnaire() {
@@ -431,11 +450,12 @@ var toogle = {
     if ($toogleConditionalQuestionInput.attr("disabled") !== "disabled") {
       var status = $(this).hasClass("is-checked");
 
-      if (status) {
-        target.text("No, it is an independent question");
+      console.log(status)
+      if (!status) {
+        target.text("Yes, it is a conditional question");
         $conditionalQuestionBlock.removeClass('hidden');
       } else {
-        target.text("Yes, it is a conditional question");
+        target.text("No, it is an independent question");
         $conditionalQuestionBlock.addClass('hidden');
       }
     }
