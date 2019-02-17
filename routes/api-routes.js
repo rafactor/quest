@@ -65,8 +65,8 @@ router.delete("/questionnaires/:id", function (req, res) {
 
 router.post("/questionnaires/:id/question", (req, res) => {
   console.log('routing')
-console.log(res)
-  questionnaire.create(req).then(response => {
+// console.log(res)
+  questionnaire.addQuestion(req).then(response => {
     res.json(response)
   }).catch(err => {
     res.status(500).json({

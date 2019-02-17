@@ -13,14 +13,20 @@
   </div>
 
   <!-- Select with floating label -->
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select questionnaire-input-width">
-    <select class="mdl-textfield__input" id="input-questionnaire-type" name="type">
-      <option></option>
-      <option value="Calculator">Calculator</option>
-      <option value="Profile">Profile</option>
-    </select>
-    <label for="input-questionnaire-type" class="mdl-textfield__label questionnaire-input-width ">Type</label>
-     </div>
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+      <input type="text" value="" class="mdl-textfield__input" id="input-questionnaire-type" readonly>
+      <input type="hidden" value="" name="input-questionnaire-type">
+      {{!-- <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i> --}}
+      <label for="input-questionnaire-type" class="mdl-textfield__label">Type</label>
+      <ul for="input-questionnaire-type" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+        <li class="mdl-menu__item" data-val="Calculator">Calculator</li>
+        <li class="mdl-menu__item" data-val="Profile">Profile</li>
+        <li class="mdl-menu__item" data-val="OficialForm">Oficial Form</li>
+      </ul>
+    </div>
+
+
+
 
   <div class="mdl-textfield mdl-js-textfield questionnaire-input-width questionnaire-input-height">
     <textarea class="mdl-textfield__input " type="text" rows="3" maxrows="6" id="input-questionnaire-description"></textarea>

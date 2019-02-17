@@ -15,7 +15,7 @@ const $btnDeleteQuestionnaire = $("#questionnaire-delete");
 const $btnEditQuestions = $(".quest-card__list--questions > li > a");
 
 const $btnCreateQuestionnaire = $("#btn-create-questionnaire");
-const $btnCreateQuestions = $("#btn-create-questions");
+const $btnCreateQuestions = $("#btn-create-question");
 const $btnCloseQuestionnaire = $("#btn-close-questionnaire");
 const $btnListedQuestionnaire = $(".quest-card__list--questionnaires > li");
 const $btnListedQuestion = $(".quest-card__list--questions > li");
@@ -52,6 +52,7 @@ const $inputsQuestionDetailConditional = $(
 );
 const $inputQuestionEn = $('#input-question-name');
 const $inputQuestionType = $('#input-question-type');
+const $selectorQuestionType = $('#ul-input-question-type > li');
 const $inputQuestionOptionList = $('#input-option-list');
 const $inputConditionalQuestionId = $("#conditional-question-id");
 const $inputConditionalAnswer = $('#conditional-answer');
@@ -62,6 +63,8 @@ const $btnEditQuestion = $("#question-edit");
 const $btnSaveQuestion = $("#question-save");
 const $btnCancelQuestion = $("#question-cancel");
 const $btnDeleteQuestion = $("#question-delete");
+
+const $selectors = $('.getmdl-select')
 
 
 //fields in Questionnaire Detail Card
@@ -193,10 +196,12 @@ var handlers = {
 
   newQuestionnaire() {
     //Display the form and enable fields
+    console.log('new')
     $containerCreateQuestionnaire.removeClass("hidden");
     $btnCloseQuestionnaire.removeClass("hidden");
-    $fieldsQuestionnaireDetail.removeClass("is-dirty").attr("disabled", false);
-    $fieldsQuestionnaireDetailConditional.removeClass("is-dirty").attr("disabled", false);
+    $fieldsQuestionnaireDetail.removeClass("is-dirty")
+    $inputsQuestionnaireDetail.attr("disabled", false);
+    // $fieldsQuestionnaireDetailConditional.removeClass("is-dirty").attr("disabled", false);
 
     $toogleQuestionnaireActiveInput.attr("disabled", false);
 
@@ -372,6 +377,7 @@ var handlers = {
     $btnSaveQuestionnaire.removeClass("hidden");
     $btnDeleteQuestionnaire.removeClass("hidden");
     $btnCreateQuestions.removeClass("hidden");
+    // $btnSubmitQuestion.removeClass("hidden");
     $cardQuestionnaire.addClass("hidden");
     $cardQuestionDetail.removeClass("hidden");
     $btnCreateQuestions.removeClass("hidden");
@@ -491,6 +497,21 @@ $($toogleQuestionnaireActive).on("click", toogle.activeQuestionnaireToggle);
 $($toogleConditionalQuestion).on("click", toogle.conditionalToggle);
 $($toogleQuestionActive).on("click", toogle.activeQuestionToggle);
 
+$($selectors).on("click", function(e){
+  var target = $(event.target)
+  var value = target.attr('data-val')
+  var text = target[0].innerHTML
+ 
+  
+  var parent = target[0].offsetParent.offsetParent.offsetParent.children[0]
+  parent.value = text
+
+  var id = parent.id
+
+  console.log(target)
+  console.log(target[0].attributes)
+   console.log(value, text)
+})
 
 //       var cardHeight
 //       if (win.height() >= 820) { /* ... */ }
