@@ -1620,7 +1620,7 @@ module.exports = {
     },{
       QuestionId: 26,
       name: "languageTests2",
-      optionEn: "",
+      optionEn: "N/A",
       optionPt: "",
       order: 1,
       type: "STRING",

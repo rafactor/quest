@@ -6,8 +6,6 @@ $( document ).ready(function() {
 
         $("[data-parent="+questionId+"]").each(function(i, element){
             var revealValue = ($(element).data("unhide"));
-            console.log(revealValue);
-            console.log(optionValue);
             if(revealValue == optionValue) {
                 $(element).removeClass("hidden");
             }
@@ -15,9 +13,8 @@ $( document ).ready(function() {
     });
 
     $("#submit").submit(function(event) {
-        
+        alert("Thank you for submitting your questionnaire.")
     })
 });
 
-// if option value = conditional value
 
