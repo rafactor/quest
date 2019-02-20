@@ -72,7 +72,7 @@ module.exports = {
     },{
       QuestionId: 2,      
       name: 'yesNo',
-      optionEn: "",
+      optionEn: "N/A",
       order: 1,
       type: "STRING",
       createdAt: new Date(),
@@ -96,7 +96,7 @@ module.exports = {
     },{
       QuestionId: 3,      
       name: 'yesNo',
-      optionEn: "",
+      optionEn: "N/A",
       order: 1,
       type: "STRING",
       createdAt: new Date(),

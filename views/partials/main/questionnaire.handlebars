@@ -26,7 +26,7 @@
                 <div class="mdl-cell mdl-cell--11-col">
                     <br>
                     {{#each questionData}}
-                    <div class="{{#if dataValues.isConditional}} hidden {{/if}}" data-parent="{{dataValues.conditionalQuestionId}}">
+                    <div class="{{#if dataValues.isConditional}} hidden {{/if}}" data-parent="{{dataValues.conditionalQuestionId}}" data-unhide="{{dataValues.unhideValue}}">
                     
                     <strong>{{dataValues.id}}.</strong>
                     <strong>{{dataValues.questionEn}}</strong> <br>
@@ -37,12 +37,16 @@
                     </select> <br> <br>
                     </div>
                     {{/each}}
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="submit">Submit</button>
                     <br>
                 </div>
             </form>
         </div>
     </main>
 </div>
+
+<script src="/js/questionnaire.js">
+    
+</script>
 
 

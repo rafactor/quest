@@ -35,6 +35,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     },
 
+    unhideValue: {
+      type: DataTypes.INTEGER
+    },
+
     status: {
       type: DataTypes.STRING,
       defaultValue: "active"
