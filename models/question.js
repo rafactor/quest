@@ -1,14 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
   var Question = sequelize.define("Question", {
     questionEn: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       defaultValue: null,
       allowNull: false,
       notEmpty: true
     },
 
     questionPt: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       defaultValue: null
     },
 
@@ -37,6 +37,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     },
 
+    unhideValue: {
+      type: DataTypes.INTEGER
+    },
+
     status: {
       type: DataTypes.STRING,
       defaultValue: "active"
@@ -51,6 +55,11 @@ module.exports = function(sequelize, DataTypes) {
   Question.associate = function(models) {
     // Associate Question with Questions
     Question.belongsTo(models.Questionnaire, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    Question.hasMany(models.AuxOptions, {
       foreignKey: {
         allowNull: false
       }

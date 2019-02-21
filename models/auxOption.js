@@ -32,5 +32,14 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+  AuxOptions.associate = function(models) {
+    // Associate AuxOptions with Question
+    AuxOptions.belongsTo(models.Question, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return AuxOptions;
 };

@@ -6,6 +6,8 @@ const passport = require("../config/passport");
 const db = require("../models");
 const questionnaire = require("../controllers/questionnaire-controller");
 
+var auxiliar = require("../controllers/auxiliar-controller");
+
 // route Questionnaires calls
 router.get("/questionnaires", (req, res) => {
   questionnaire.getAll().then(response => {
@@ -122,5 +124,8 @@ router.get("/user_data", function (req, res) {
     });
   }
 });
+
+// route Auxiliar calls
+router.get("/auxiliar", auxiliar.getAuxOption);
 
 module.exports = router;
