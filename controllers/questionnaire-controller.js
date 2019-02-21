@@ -143,7 +143,7 @@ module.exports = {
   },
 
   addQuestion: (req) => {
-    console.log('Controller')
+    console.log(req)
     return new Promise((resolve, reject) => {
       console.log(req.body)
       db.Question.create({  
@@ -154,7 +154,7 @@ module.exports = {
         isConditional: req.body.isConditional,
         conditionalQuestionId: req.body.conditionalQuestionId,
         status: req.body.status,
-        questionnaireId: parseInt(req.body.id)
+        QuestionnaireId: parseInt(req.body.QuestionnaireId)
       }).then(data => {
         const response = {
           message: "Question added!",
