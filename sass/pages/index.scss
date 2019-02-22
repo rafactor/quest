@@ -4,25 +4,22 @@
 }
 
 
-.quest-card-wide.mdl-card {
-    width: 800px;
-    margin: 5rem auto 0 auto;
+.quest-card-square.mdl-card {
+    // width: 800px;
+    height: 20rem;
+    width: 20rem;
+    margin: 1rem auto 0 auto;
   }
   
-  .quest-card-wide > .mdl-card__title {
-    color:#fff;
-    height: 20rem;
-    // background: url('../images/red-flag.jpg') center / cover;
+  .quest-card-square > .mdl-card__title {
+    background-color: black;
+    color: white;
+    
+    background: url('../images/background.png') center / cover;
   }
-  .quest-card-wide > .mdl-card__menu {
-    color: #fff;
-  }
-
-  .express {
-    background: url('../images/red-flag.jpg') center / cover;
+  .quest-card-square > .mdl-card__menu {
+    color:black;
   }
 
-  .eTA {
-    background: url('../images/eTA.jpg') center / cover;
-  }
+
 

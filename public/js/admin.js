@@ -55,6 +55,7 @@ const $fieldsQuestionDetailConditional = $(
 
 const $inputQuestionEn = $('#input-question-name');
 const $inputQuestionType = $('#input-question-type');
+const $inputQuestionOptionListDiv = $('#option-div');
 const $selectorQuestionType = $('#ul-input-question-type > li');
 const $inputQuestionOptionList = $('#input-option-list');
 const $inputConditionalQuestionId = $("#conditional-question-id");
@@ -68,6 +69,7 @@ const $btnCancelQuestion = $("#question-cancel");
 const $btnDeleteQuestion = $("#question-delete");
 
 const $selectors = $('.getmdl-select')
+const $selection = $(".mdl-menu__item")
 
 
 //fields in Questionnaire Detail Card
@@ -106,6 +108,7 @@ const $conditionalQuestionBlock = $('#conditional-block')
 var selectedId;
 var selectedQuestionnaire = {}
 var selectedQuestionID;
+var selection;
 
 var api = {
   postQuestionnaire(body) {
@@ -268,7 +271,7 @@ var handlers = {
       status: $toogleQuestionActive.hasClass("is-checked") ? 'active' : '',
     };
 
-    api.postQuestion(body);
+    api.postQuestion(body).then( window.location.reload());
   },
 
   closeQuestionnaireForm() {
@@ -283,17 +286,7 @@ var handlers = {
     $cardQuestions.empty().addClass("hidden");
   },
 
-  listedQuestionnaire() {
-    var target = $(event.target);
-    selectedId = target.attr("data-id");
-
-    $containerCreateQuestionnaire.removeClass("hidden");
-    $btnCloseQuestionnaire.removeClass("hidden");
-    $btnCreateQuestionnaire.addClass("hidden");
-    $titleCreateQuestionnaireTitle.html("View Questionnaire");
-    $btnCreateQuestions.addClass("hidden");
-
-    //call the api and populate fields
+  updateQuestions(selectedId){
     api.getQuestionnaire(selectedId).then(response => {
 
       selectedQuestionnaire = response;
@@ -334,6 +327,19 @@ var handlers = {
       $cardQuestions.removeClass("hidden");
     });
   },
+  listedQuestionnaire() {
+    var target = $(event.target);
+    selectedId = target.attr("data-id");
+
+    $containerCreateQuestionnaire.removeClass("hidden");
+    $btnCloseQuestionnaire.removeClass("hidden");
+    $btnCreateQuestionnaire.addClass("hidden");
+    $titleCreateQuestionnaireTitle.html("View Questionnaire");
+    $btnCreateQuestions.addClass("hidden");
+
+    //call the api and populate fields
+    handlers.updateQuestions(selectedId)
+  },
 
 
   listedQuestion(){
@@ -354,7 +360,7 @@ var handlers = {
 
     $btnEditQuestion.removeClass('hidden');
     $btnCancelQuestion.addClass("hidden");
-    $btnSaveQuestion.addClass("hidden");
+    // $btnSaveQuestion.addClass("hidden");
     $btnDeleteQuestion.addClass("hidden");
     $inputsQuestionDetail.attr("disabled", "disabled");
     $inputsQuestionDetailConditional.attr("disabled", "disabled")
@@ -397,7 +403,7 @@ var handlers = {
     $toogleConditionalQuestionInput.attr("disabled", false)
 
     $btnEditQuestion.addClass("hidden");
-    $btnSaveQuestion.removeClass("hidden")
+    // $btnSaveQuestion.removeClass("hidden")
     $btnCancelQuestion.removeClass("hidden")
     $btnDeleteQuestion.removeClass("hidden")
 
@@ -604,19 +610,25 @@ $($toogleQuestionActive).on("click", toogle.activeQuestionToggle);
 
 $($selectors).on("click", function(e){
   var target = $(event.target)
-  var value = target.attr('data-val')
   var text = target[0].innerHTML
- 
   
   var parent = target[0].offsetParent.offsetParent.offsetParent.children[0]
   parent.value = text
-
-  var id = parent.id
-
-  console.log(target)
-  console.log(target[0].attributes)
-  //  console.log(value, text)
 })
+
+$($selection).on("click", function(e){
+  selection = ($(this)[0].attributes[1].nodeValue)
+  parent = $(this)[0].parentNode.id
+
+  if (parent === "ul-input-question-type") {
+    if ( selection === "Option") {
+      $inputQuestionOptionListDiv.removeClass('hidden')
+    } else {
+      $inputQuestionOptionListDiv.addClass('hidden')
+    } 
+}
+})
+
 
 //       var cardHeight
 //       if (win.height() >= 820) { /* ... */ }

@@ -9,7 +9,11 @@ var auxiliar = require("../controllers/auxiliar-controller");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 router.get("/", function(req, res) {
-  res.render("index", {});
+  questionnaire.getAll().then(response => {
+    console.log(response)
+    res.render("index", response)
+  })
+  ;
 });
 
 router.get("/login", function(req, res) {
@@ -38,12 +42,9 @@ router.get("/members", isAuthenticated, function(req, res) {
 
 router.get("/express", function(req, res) {
   auxiliar.getAuxOption().then(function(response) {
-    console.log(response);
     res.render("express", response);
   });
-  console.log("hehe");
-  // console.log(data)
-  // res.render("express", );
+
 });
 
 router.get("/admin", function(req, res) {
