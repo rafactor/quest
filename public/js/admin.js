@@ -5,6 +5,20 @@ console.log("admin");
 const $questionnaireList = $(".quest-card__list--questionnaires");
 const $questionList = $(".quest-card__list--questions");
 
+//Questionnaire Fields
+const $cardQuestionnaire = $(".quest-card--questionnaire");
+const $cardQuestionnaireTitle = $("#input-questionnaire-name");
+const $cardQuestionDetail = $(".quest-card__detailed-questions");
+const $containerCreateQuestionnaire = $(".quest-card__container");
+const $titleCreateQuestionnaireTitle = $(".quest-card__questionnaire__title");
+const $containerQuestions = $("#container__questions > div");
+
+//Questionnaire buttons
+const $btnCreateQuestionnaire = $("#btn-create-questionnaire");
+const $btnCreateQuestions = $("#btn-create-question");
+const $btnCloseQuestionnaire = $("#btn-close-questionnaire");
+const $btnListedQuestionnaire = $(".quest-card__list--questionnaires > li");
+const $btnListedQuestion = $(".quest-card__list--questions > li");
 
 const $btnQuestionnaireButtons = $(".mdl-button--raised");
 const $btnSubmitQuestionnaire = $("#questionnaire-submit");
@@ -14,42 +28,31 @@ const $btnCancelQuestionnaire = $("#questionnaire-cancel");
 const $btnDeleteQuestionnaire = $("#questionnaire-delete");
 const $btnEditQuestions = $(".quest-card__list--questions > li > a");
 
-const $btnCreateQuestionnaire = $("#btn-create-questionnaire");
-const $btnCreateQuestions = $("#btn-create-question");
-const $btnCloseQuestionnaire = $("#btn-close-questionnaire");
-const $btnListedQuestionnaire = $(".quest-card__list--questionnaires > li");
-const $btnListedQuestion = $(".quest-card__list--questions > li");
-
-
-//quest-card--questionnaire
-const $cardQuestionnaire = $(".quest-card--questionnaire");
-const $cardQuestionDetail = $(".quest-card__detailed-questions");
-const $containerCreateQuestionnaire = $(".quest-card__container");
-const $titleCreateQuestionnaireTitle = $(".quest-card__questionnaire__title");
-const $containerQuestions = $("#container__questions > div");
-
 // Questionnaires Block
 // const $cardListQuestionnaire = $(".quest-card__list-questionnaires");
-const $cardQuestionnaireTitle = $("#input-questionnaire-name");
+
 
 //Questions Block
 const $cardQuestions = $(".quest-card__list--questions");
+const $containerQuestionsDetail = $(".quest-card__detailed-questions > .quest-card__container")
 
 //Questions Fields
 const $fieldsQuestionDetail = $(
   ".quest-card__detailed-questions > div > form > .mdl-textfield"
 );
-const $fieldsQuestionDetailConditional = $(
-  "#conditional-block > .mdl-textfield"
-);
-
-
 const $inputsQuestionDetail = $(
   ".quest-card__detailed-questions > div > form > div > .mdl-textfield__input"
 )
 const $inputsQuestionDetailConditional = $(
   "#conditional-block > div > .mdl-textfield__input"
 );
+const $fieldsQuestionDetailConditional = $(
+  "#conditional-block > .mdl-textfield"
+);
+
+
+
+
 const $inputQuestionEn = $('#input-question-name');
 const $inputQuestionType = $('#input-question-type');
 const $selectorQuestionType = $('#ul-input-question-type > li');
@@ -92,7 +95,7 @@ const $toogleQuestionActiveLabel = $(
   "#label-question-active-switch > span.mdl-switch__label"
 );
 
-const $toogleConditionalQuestion = $("#label-conditional-switch");
+const $toogleConditionalQuestionActive = $("#label-conditional-switch");
 const $toogleConditionalQuestionInput = $("#label-conditional-switch > input");
 const $toogleConditionalQuestionLabel = $(
   "#label-conditional-switch > span.mdl-switch__label"
@@ -102,6 +105,7 @@ const $conditionalQuestionBlock = $('#conditional-block')
 
 var selectedId;
 var selectedQuestionnaire = {}
+var selectedQuestionID;
 
 var api = {
   postQuestionnaire(body) {
@@ -115,8 +119,18 @@ var api = {
     });
   },
 
+  postQuestion(body) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/questionnaires/" + body.QuestionnaireId + "/question",
+      data: JSON.stringify(body)
+    });
+  },
+
   getQuestionnaires() {
-    console.log("get");
     return $.ajax({
       // headers: {
       //   "Content-Type": "application/json"
@@ -141,6 +155,14 @@ var api = {
     return $.ajax({
       type: "DELETE",
       url: "api/questionnaires/" + selectedId
+    });
+  },
+
+  deleteQuestion(selectedQuestionID) {
+    console.log("api delete");
+    return $.ajax({
+      type: "DELETE",
+      url: "api/questionnaires/" + selectedId + "/question/" + selectedQuestionID
     });
   },
 
@@ -199,7 +221,7 @@ var handlers = {
     console.log('new')
     $containerCreateQuestionnaire.removeClass("hidden");
     $btnCloseQuestionnaire.removeClass("hidden");
-    $fieldsQuestionnaireDetail.removeClass("is-dirty")
+    $fieldsQuestionnaireDetail.addClass("is-dirty")
     $inputsQuestionnaireDetail.attr("disabled", false);
     // $fieldsQuestionnaireDetailConditional.removeClass("is-dirty").attr("disabled", false);
 
@@ -228,9 +250,25 @@ var handlers = {
       description: $inputQuestionnaireDescription.val().trim(),
       active: $toogleQuestionnaireActive.hasClass("is-checked") ? true : false
     };
-    console.log(body);
+    
     api.postQuestionnaire(body);
     window.location.reload();
+  },
+
+  submitQuestion(){
+    event.preventDefault();
+    var body = {
+      QuestionnaireId: parseInt(selectedId),
+      questionEn: ($inputQuestionEn) ? $inputQuestionEn.val().trim() : null,
+      type: ($inputQuestionType) ? $inputQuestionType.val().trim() : null,
+      optionList: ($inputQuestionOptionList) ? $inputQuestionOptionList.val().trim() : null,
+      isConditional: $toogleConditionalQuestionActive.hasClass("is-checked") ? true : false,
+      conditionalQuestionId: (Number.isInteger($inputConditionalQuestionId)) ? $inputConditionalQuestionId.val() : null,
+      conditionalAnswer: ($inputConditionalAnswer) ? $inputConditionalAnswer.val().trim() : null,
+      status: $toogleQuestionActive.hasClass("is-checked") ? 'active' : '',
+    };
+
+    api.postQuestion(body);
   },
 
   closeQuestionnaireForm() {
@@ -239,6 +277,7 @@ var handlers = {
     $btnEditQuestions.addClass("hidden");
     $cardQuestionnaire.removeClass("hidden");
     $cardQuestionDetail.addClass("hidden");
+    $btnCreateQuestions.addClass("hidden");
 
     $btnCreateQuestionnaire.removeClass("hidden");
     $cardQuestions.empty().addClass("hidden");
@@ -287,6 +326,7 @@ var handlers = {
       //hide all buttons and display only edit
       $btnQuestionnaireButtons.addClass("hidden");
       $btnEditQuestionnaire.removeClass("hidden");
+      $btnCreateQuestions.removeClass("hidden");
       $cardQuestionDetail.addClass("hidden");
       handlers.getQuestions(response.questionnaires[0]);
 
@@ -299,15 +339,28 @@ var handlers = {
   listedQuestion(){
     var target = $(event.target);
     var id = target.attr("data-id");
+    selectedQuestionID = target.attr("data-questionid");
+    
+
+    $containerQuestionsDetail.removeClass('hidden');
 
     $fieldsQuestionDetail.addClass("is-dirty");
     $fieldsQuestionDetailConditional.addClass("is-dirty");
 
-      console.log(selectedQuestionnaire)
     var questions = selectedQuestionnaire.questionnaires[0].questions
     console.log(questions)
     $cardQuestionnaire.addClass('hidden');
     $cardQuestionDetail.removeClass('hidden');
+
+    $btnEditQuestion.removeClass('hidden');
+    $btnCancelQuestion.addClass("hidden");
+    $btnSaveQuestion.addClass("hidden");
+    $btnDeleteQuestion.addClass("hidden");
+    $inputsQuestionDetail.attr("disabled", "disabled");
+    $inputsQuestionDetailConditional.attr("disabled", "disabled")
+    $toogleQuestionActiveInput.attr("disabled", "disabled")
+    $toogleConditionalQuestionInput.attr("disabled", "disabled")
+
 
     //populate fields
      $inputQuestionEn.val(questions[id].questionEn)
@@ -317,12 +370,12 @@ var handlers = {
      $inputConditionalAnswer.val(questions[id].conditionalAnswer)
 
      if (questions[id].isConditional === true) {
-      $toogleConditionalQuestion.addClass("is-checked");
+      $toogleConditionalQuestionActive.addClass("is-checked");
       $toogleConditionalQuestionLabel.text("Yes, it is a conditional question");
       $conditionalQuestionBlock.removeClass('hidden');
     } else {
       console.log(questions[id].isConditional)
-      $toogleConditionalQuestion.removeClass("is-checked");
+      $toogleConditionalQuestionActive.removeClass("is-checked");
       $toogleConditionalQuestionLabel.text("No, it is an independent question");
       $conditionalQuestionBlock.addClass('hidden');
     }
@@ -337,8 +390,21 @@ var handlers = {
 
   },
 
+  editQuestion(){
+    $inputsQuestionDetail.attr("disabled", false);
+    $inputsQuestionDetailConditional.attr("disabled", false)
+    $toogleQuestionActiveInput.attr("disabled", false)
+    $toogleConditionalQuestionInput.attr("disabled", false)
+
+    $btnEditQuestion.addClass("hidden");
+    $btnSaveQuestion.removeClass("hidden")
+    $btnCancelQuestion.removeClass("hidden")
+    $btnDeleteQuestion.removeClass("hidden")
+
+  },
+
   getQuestions(data) {
-    // console.log(data)
+    console.log('again')
     $cardQuestions.empty();
 
     var object = data.questions;
@@ -346,17 +412,17 @@ var handlers = {
     for (let o in object) {
       let html =
         '<li class="mdl-list__item mdl-list__item--three-line" data-id="' + o + '">' +
-        '<span class="mdl-list__item-primary-content" data-id="' + o + '">' + 
+        '<span class="mdl-list__item-primary-content" data-questionId = "' + object[o].id + '" data-id="' + o + '">' + 
         // '<i class="material-icons mdl-list__item-avatar">create</i>' +
-        '<span data-id="' + o + '">' +
+        '<span data-questionId = "' + object[o].id + '" data-id="' + o + '">' +
         "Question Id:" +
         object[o].id +
         "</span>" +
-        '<span class="mdl-list__item-text-body" data-id="' + o + '">' +
+        '<span class="mdl-list__item-text-body" data-questionId = "' + object[o].id + '" data-id="' + o + '">' +
         object[o].questionEn +
         "</span>" +
         "</span>" +
-        '<a class="mdl-list__item-secondary-action hidden" data-id="' + o + '+href="#"><i class="material-icons">edit</i></a>';
+        '<a class="mdl-list__item-secondary-action hidden" data-questionId = "' + object[o].id + '" data-id="' + o + '+href="#"><i class="material-icons">edit</i></a>';
 
       ("</li>");
 
@@ -364,13 +430,29 @@ var handlers = {
     }
   },
 
+  addQuestion(){
+    $cardQuestionnaire.addClass("hidden");
+$cardQuestionDetail.removeClass("hidden");
+    $inputsQuestionDetail.attr("disabled", false);
+    $inputsQuestionDetail.addClass("is-dirty")
+
+    $btnSubmitQuestion.removeClass("hidden");
+    $btnCreateQuestions.addClass("hidden");
+    $toogleConditionalQuestionInput.attr("disabled", false);
+    $toogleQuestionActiveInput.attr("disabled", false);
+    $inputsQuestionDetailConditional.attr("disabled", false);
+
+    $fieldsQuestionDetail.addClass("is-dirty");
+    $fieldsQuestionDetailConditional.addClass("is-dirty");
+
+
+},
+
   editQuestionnaire() {
     event.preventDefault();
 
     $inputsQuestionnaireDetail.attr("disabled", false);
-    $inputsQuestionDetail.attr("disabled", false);
-    $toogleConditionalQuestionInput.attr("disabled", false);
-    $toogleQuestionActiveInput.attr("disabled", false);
+   
     $toogleQuestionnaireActiveInput.attr("disabled", false);
 
     $btnQuestionnaireButtons.addClass("hidden");
@@ -378,9 +460,10 @@ var handlers = {
     $btnDeleteQuestionnaire.removeClass("hidden");
     $btnCreateQuestions.removeClass("hidden");
     // $btnSubmitQuestion.removeClass("hidden");
-    $cardQuestionnaire.addClass("hidden");
-    $cardQuestionDetail.removeClass("hidden");
+    // $cardQuestionnaire.addClass("hidden");
+    // $cardQuestionDetail.removeClass("hidden");
     $btnCreateQuestions.removeClass("hidden");
+
     $(".quest-card__list--questions > li > a").removeClass("hidden");
     // console.log("show");
   },
@@ -393,6 +476,22 @@ var handlers = {
     api.deleteQuestionnaire(selectedId).then(() => {
       console.log("deleted"), handlers.getQuestionnaires();
     });
+  },
+
+  deleteQuestion() {
+    event.preventDefault();
+
+    console.log("delete");
+
+    api.deleteQuestion(selectedQuestionID).then(() => {
+      console.log("deleted"), window.location.reload();
+    });
+  },
+
+  cancelQuestion(){
+    event.preventDefault();
+
+    $containerQuestionsDetail.addClass('hidden')
   },
 
   saveQuestionnaire() {
@@ -478,6 +577,12 @@ $btnCreateQuestionnaire.on("click", handlers.newQuestionnaire);
 $btnCloseQuestionnaire.on("click", handlers.closeQuestionnaireForm);
 $btnSaveQuestionnaire.on("click", handlers.saveQuestionnaire);
 
+$btnCreateQuestions.on("click", handlers.addQuestion)
+$btnSubmitQuestion.on("click", handlers.submitQuestion)
+$btnEditQuestion.on("click", handlers.editQuestion)
+$btnDeleteQuestion.on("click", handlers.deleteQuestion)
+$btnCancelQuestion.on("click", handlers.cancelQuestion)
+
 $($questionnaireList).on(
   "click",
   $btnListedQuestionnaire,
@@ -494,7 +599,7 @@ $(document).ready(handlers.resize);
 $(window).on("resize", handlers.resize);
 
 $($toogleQuestionnaireActive).on("click", toogle.activeQuestionnaireToggle);
-$($toogleConditionalQuestion).on("click", toogle.conditionalToggle);
+$($toogleConditionalQuestionActive).on("click", toogle.conditionalToggle);
 $($toogleQuestionActive).on("click", toogle.activeQuestionToggle);
 
 $($selectors).on("click", function(e){
@@ -510,7 +615,7 @@ $($selectors).on("click", function(e){
 
   console.log(target)
   console.log(target[0].attributes)
-   console.log(value, text)
+  //  console.log(value, text)
 })
 
 //       var cardHeight

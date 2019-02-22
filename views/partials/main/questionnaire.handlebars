@@ -1,4 +1,7 @@
-<div class="mdl-layout mdl-js-layout">
+<main class="quest-admin mdl-layout__content">
+    <div class="mdl-grid questionnaires-grid">
+
+        {{!-- <div class="mdl-layout mdl-js-layout">
     <header class="mdl-layout__header">
         <div class="mdl-layout-icon">
         </div>
@@ -10,43 +13,45 @@
                     <a href="about page link" class="mdl-navigation__link">About</a>
                 </nav>
             </div>
-    </header>
+    </header> --}}
 
-    <div class="mdl-layout__drawer">
+        {{!-- <div class="mdl-layout__drawer">
         <span class="mdl-layout__title">Navigation</span>
         <nav class="mdl-navigation">
             <a href="index.html" class="mdl-navigation__link">Home</a>
             <a href="about page link" class="mdl-navigation__link">About</a>
         </nav>
-    </div>
+    </div> --}}
 
-    <main class="mdl-layout__content">
+        {{!-- <main class="mdl-layout__content"> --}}
         <div id="questionnaire-form">
             <form id="questionnaire">
                 <div class="mdl-cell mdl-cell--11-col">
                     <br>
                     {{#each questionData}}
-                    <div class="{{#if dataValues.isConditional}} hidden {{/if}}" data-parent="{{dataValues.conditionalQuestionId}}" data-unhide="{{dataValues.unhideValue}}">
-                    
-                    <strong>{{dataValues.id}}.</strong>
-                    <strong>{{dataValues.questionEn}}</strong> <br>
-                    <select id="responseDropDown{{dataValues.id}}" class="mdl-cell responseDropDown" data-question-id="{{dataValues.id}}">
-                    {{#each dataValues.AuxOptions}}
-                    <option value="{{id}}">{{optionEn}}</option>
-                    {{/each}}
-                    </select> <br> <br>
+                    <div class="{{#if dataValues.isConditional}} hidden {{/if}}"
+                        data-parent="{{dataValues.conditionalQuestionId}}" data-unhide="{{dataValues.unhideValue}}">
+
+                        <strong>{{dataValues.id}}.</strong>
+                        <strong>{{dataValues.questionEn}}</strong> <br>
+                        <select id="responseDropDown{{dataValues.id}}" class="mdl-cell responseDropDown"
+                            data-question-id="{{dataValues.id}}">
+                            {{#each dataValues.AuxOptions}}
+                            <option value="{{id}}">{{optionEn}}</option>
+                            {{/each}}
+                        </select> <br> <br>
                     </div>
                     {{/each}}
-                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="submit">Submit</button>
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        id="submit">Submit</button>
                     <br>
                 </div>
             </form>
         </div>
-    </main>
-</div>
+    </div>
+</main>
+
 
 <script src="/js/questionnaire.js">
-    
+
 </script>
-
-

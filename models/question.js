@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     },
 
     type: {
-      type: DataTypes.ENUM("Open", "Option", "Text", "Range", "yesNo", "Date"),
+      type: DataTypes.STRING,
       defaultValue: null,
       allowNull: false
     },
@@ -25,20 +25,23 @@ module.exports = function(sequelize, DataTypes) {
 
     isConditional: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
-      allowNull: false
+      defaultValue: false
     },
 
     conditionalQuestionId: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      defaultValue: null
+
     },
 
     conditionalAnswer: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue: null
     },
 
     unhideValue: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      defaultValue: null
     },
 
     status: {

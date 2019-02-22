@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var questionnaire = require("../controllers/questionnaire-controller");
+var auxiliar = require("../controllers/auxiliar-controller");
+
 // var db = require("../models");
 
 // Requiring our custom middleware for checking if a user is logged in
@@ -32,6 +34,16 @@ router.get("/members", isAuthenticated, function(req, res) {
       registered: true
     });
   }
+});
+
+router.get("/express", function(req, res) {
+  auxiliar.getAuxOption().then(function(response) {
+    console.log(response);
+    res.render("express", response);
+  });
+  console.log("hehe");
+  // console.log(data)
+  // res.render("express", );
 });
 
 router.get("/admin", function(req, res) {

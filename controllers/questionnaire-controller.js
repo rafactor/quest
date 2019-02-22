@@ -143,9 +143,8 @@ module.exports = {
   },
 
   addQuestion: (req) => {
-    console.log(req)
+
     return new Promise((resolve, reject) => {
-      console.log(req.body)
       db.Question.create({  
         questionEn: req.body.questionEn,
         questionPt: req.body.questionEn,
@@ -166,7 +165,7 @@ module.exports = {
             isConditional: data.isConditional,
             conditionalQuestionId: data.conditionalQuestionId,
             status: data.status,
-            questionnaireId: data.questionnaireId
+            QuestionnaireId: data.QuestionnaireId
             // request: {
             //   type: 'GET',
             //   url: 'http://localhost:3000/api/questionnaires/' + data.questionnaireId
@@ -178,7 +177,23 @@ module.exports = {
     });
   },
 
-
+  deleteQuestion: (idDelete) => {
+    console.log('delete:' + idDelete)
+    return new Promise((resolve, reject) =>{
+      db.Question.destroy({
+        where: {
+          id: parseInt(idDelete)
+        }
+      }).then(() => {
+        const response = {
+          message: 'Question deleted',
+        };
+        resolve(response);
+      })
+      .catch(reject);
+      
+    });
+  },
       
 
 }

@@ -52,10 +52,25 @@ router.put("/questionnaires/", (req, res) => {
 
 router.delete("/questionnaires/:id", function (req, res) {
   const id = parseInt(req.params.id)
-  console.log('delete response')
+
 
   questionnaire.delete(id).then(function (response) {
-    console.log(response)
+    res.json(response)
+
+  }).catch(function (err) {
+    res.status(500).json({
+      error: err
+    }).end();
+  });
+});
+
+router.delete("/questionnaires/:id/question/:questionId", function (req, res) {
+  console.log('requestes')
+  const id = parseInt(req.params.id)
+  const questionId = parseInt(req.params.questionId)
+  
+
+  questionnaire.deleteQuestion(questionId).then(function (response) {
     res.json(response)
 
   }).catch(function (err) {
@@ -66,11 +81,13 @@ router.delete("/questionnaires/:id", function (req, res) {
 });
 
 router.post("/questionnaires/:id/question", (req, res) => {
-  console.log('routing')
+  console.log('question add request')
+  // console.log(req.body)
 // console.log(res)
   questionnaire.addQuestion(req).then(response => {
     res.json(response)
   }).catch(err => {
+    console.log(err)
     res.status(500).json({
       error: err
     }).end();
