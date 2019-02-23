@@ -1,31 +1,34 @@
 <main class="quest-admin mdl-layout__content">
     <div class="mdl-grid questionnaires-grid">
-
-        <div id="questionnaire-form">
+        <div class="mdl-cell mdl-cell--2-col"></div>
+        <div class="mdl-cell mdl-cell--8-col">
             <form id="questionnaire">
-                <div class="mdl-cell mdl-cell--11-col">
-                    <br>
-                    {{#each questionData}}
-                    <div class="{{#if dataValues.isConditional}} hidden {{/if}}"
-                        data-parent="{{dataValues.conditionalQuestionId}}" data-unhide="{{dataValues.unhideValue}}">
+                {{#each questionData}}
+                <div class="{{#if dataValues.isConditional}} hidden {{/if}}"
+                    data-parent="{{dataValues.conditionalQuestionId}}" data-unhide="{{dataValues.unhideValue}}">
 
-                        {{!-- <strong>{{dataValues.id}}.</strong> --}}
-                        <strong>{{dataValues.questionEn}}</strong> <br>
-                        <select id="responseDropDown{{dataValues.id}}" class="mdl-cell responseDropDown"
-                            data-question-id="{{dataValues.id}}">
+                    <strong>{{dataValues.questionEn}}</strong> <br>
+
+                    <div class="mdl-textfield mdl-js-textfield getmdl-select">
+                        <input type="text" value="" class="mdl-textfield__input" id="responseDropDown{{dataValues.id}}"
+                            data-question-id={{dataValues.id}} readonly>
+                        <input type="hidden" value="" name="responseDropDown{{dataValues.id}}">
+                        <label for="responseDropDown{{dataValues.id}}" class="mdl-textfield__label"></label>
+                        <ul for="responseDropDown{{dataValues.id}}" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                             {{#each dataValues.AuxOptions}}
-                            <option value="{{id}}">{{optionEn}}</option>
+                            <li class="mdl-menu__item" data-val={{id}}>{{optionEn}}</li>
                             {{/each}}
-                        </select> <br> <br>
+                        </ul>
                     </div>
-                    {{/each}}
-                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                        id="submit">Submit</button>
-                    <br>
                 </div>
+                {{/each}}
+
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                    id="submit">Submit</button>
+                <br>
             </form>
         </div>
-    </div>
+    <div class="mdl-cell mdl-cell--2-col"></div>
 </main>
 
 

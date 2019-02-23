@@ -271,8 +271,10 @@ var handlers = {
       status: $toogleQuestionActive.hasClass("is-checked") ? 'active' : '',
     };
 
-    api.postQuestion(body).then( window.location.reload());
-  },
+    api.postQuestion(body).then( 
+      console.log('created'),
+      window.location.reload()
+      )},
 
   closeQuestionnaireForm() {
     $containerCreateQuestionnaire.addClass("hidden");
