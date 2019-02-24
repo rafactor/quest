@@ -1,0 +1,13 @@
+.questionnaire{
+    &__title{
+        font-size: 2em;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    &__instructions{
+        font-size: 1.2em;
+        margin-bottom: 2rem;
+    }
+}

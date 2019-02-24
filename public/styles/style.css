@@ -73,6 +73,16 @@ a.mdl-list__item-secondary-action {
 li.questionnaire-listed > span {
   cursor: pointer; }
 
+.questionnaire__title {
+  font-size: 2em;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  text-align: center; }
+
+.questionnaire__instructions {
+  font-size: 1.2em;
+  margin-bottom: 2rem; }
+
 html {
   font-size: 62.5%; }
 

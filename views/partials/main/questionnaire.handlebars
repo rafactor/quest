@@ -2,6 +2,14 @@
     <div class="mdl-grid questionnaires-grid">
         <div class="mdl-cell mdl-cell--2-col"></div>
         <div class="mdl-cell mdl-cell--8-col">
+            <div class="questionnaire__title">
+                Express Entry
+            </div>
+
+            <div class="questionnaire__instructions">
+                Answer all questions to simulate your position in the Canadian Express Entry ranking system.
+            </div>
+
             <form id="questionnaire">
                 {{#each questionData}}
                 <div class="{{#if dataValues.isConditional}} hidden {{/if}}"
