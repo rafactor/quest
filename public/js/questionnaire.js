@@ -13,7 +13,7 @@ $( document ).ready(function() {
     });
 
     $("#submit").submit(function(event) {
-        alert("Thank you for submitting your questionnaire.")
+       
     })
 });
 

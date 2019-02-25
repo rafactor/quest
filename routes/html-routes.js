@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var questionnaire = require("../controllers/questionnaire-controller");
-// var db = require("../models");
+var db = require("../models");
 
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -9,6 +9,19 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 router.get("/", function(req, res) {
   res.render("index", {});
 });
+
+router.get("/questionnaire1", function(req, res) {
+  db.Question.findAll({}).then(function(response) {
+    var displayQuestions = response.map(function(item){
+      console.log(item);
+      return item
+    })
+    return res.render("partials/main/questionnaire", {questionData: response})
+  })
+});
+// router.get("/questionnaire1", function(req, res) {
+//   res.render("partials/main/questionnaire");
+// });
 
 router.get("/login", function(req, res) {
   if (req.user) {
